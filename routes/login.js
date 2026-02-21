@@ -11,7 +11,7 @@ router.get('/login', function(req, res, next) {
 
     var url_params = url.parse(req.url, true).query;
 
-    res.render('login', {returnurl: url_params.returnurl, auth_error: url_params.error});
+    res.render('login', {layout: 'layout-login', returnurl: url_params.returnurl, auth_error: url_params.error});
 });
 
 

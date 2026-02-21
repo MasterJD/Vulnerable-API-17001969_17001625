@@ -39,7 +39,7 @@ switch (process.env.STAGE){
         break;
 
     default:
-        config = config_devel;
+        config = config_local;
 }
 
 // Build connection string
