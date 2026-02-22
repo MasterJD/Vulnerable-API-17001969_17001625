@@ -1,0 +1,74 @@
+# =========================================================================
+# GOVERNANCE CI PIPELINE
+# =========================================================================
+# Runs ESLint (cyclomatic complexity gate) and Jest (coverage gate)
+# on every push and pull request. If either check fails, the build
+# is marked as failed — enforcing code quality standards.
+# =========================================================================
+
+name: Governance CI
+
+# ---------------------------------------------------------------------------
+# Triggers: run on ALL branches and all pull requests
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  governance:
+    name: Lint & Test with Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      # ----- 1. Checkout source code -----
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ----- 2. Set up Node.js -----
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # ----- 3. Install dependencies (deterministic, from lock file) -----
+      - name: Install dependencies
+        run: npm ci
+
+      # ----- 4. ESLint — Cyclomatic Complexity Gate -----
+      # Fails the build if any function exceeds complexity of 10
+      - name: Run ESLint
+        run: npm run lint
+
+      # ----- 5. Jest — Tests + Coverage Gate -----
+      # Fails the build if coverage drops below 80% on any metric
+      # (branches, functions, lines, statements)
+      - name: Run tests with coverage
+        run: npm test
+
+      # ----- 6. Generate governance reports -----
+      # Auto-generates CYCLOMATIC_COMPLEXITY_REPORT.md and CI_GOVERNANCE_LOG.md
+      - name: Generate reports
+        run: npm run report
+
+      # ----- 7. Upload coverage report as artifact -----
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14
+
+      # ----- 8. Upload generated governance reports -----
+      - name: Upload governance reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-reports
+          path: |
+            CYCLOMATIC_COMPLEXITY_REPORT.md
+            CI_GOVERNANCE_LOG.md
+          retention-days: 14

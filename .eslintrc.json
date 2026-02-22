@@ -1,0 +1,26 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "jest": true,
+    "es2021": true
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+
+  "ignorePatterns": [
+    "node_modules/",
+    "coverage/",
+    "__tests__/",
+    "__mocks__/",
+    "public/",
+    "attacks/",
+    "scanner/"
+  ],
+
+  "rules": {
+    "complexity": ["error", { "max": 10 }]
+  }
+}
