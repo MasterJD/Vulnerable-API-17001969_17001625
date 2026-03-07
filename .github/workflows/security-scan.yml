@@ -48,23 +48,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y trivy
 
-      # ----- 5. Generate SBOM (CycloneDX format) -----
-      - name: Generate SBOM
-        run: |
-          mkdir -p security
-          trivy fs --format cyclonedx -o security/sbom.json .
+      # ----- 5. Generate SBOM + Vulnerability Report (shared script) -----
+      - name: Generate SBOM and vulnerability report
+        run: npm run security:update
 
-      # ----- 6. Trivy Vulnerability Scan -----
-      - name: Run Trivy vulnerability scan
-        run: |
-          mkdir -p security/reports
-          trivy fs --scanners vuln --format json -o security/reports/vuln-ci.json .
-          trivy fs --scanners vuln --format table .
+      # ----- 6. Trivy table output (human-readable in CI logs) -----
+      - name: Display vulnerability summary
+        run: trivy fs --scanners vuln --format table .
 
       # ----- 7. Trivy scan with exit code (fail on HIGH/CRITICAL) -----
       - name: Trivy security gate
-        run: |
-          trivy fs --scanners vuln --exit-code 1 --severity HIGH,CRITICAL .
+        run: trivy fs --scanners vuln --exit-code 1 --severity HIGH,CRITICAL .
 
       # ----- 8. Upload SBOM as artifact -----
       - name: Upload SBOM
@@ -81,5 +75,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vulnerability-report
-          path: security/reports/vuln-ci.json
+          path: security/reports/vuln-latest.json
           retention-days: 30

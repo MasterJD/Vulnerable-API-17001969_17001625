@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:ab6fd09d-4acb-418e-9940-88fbda42c895",
+  "serialNumber": "urn:uuid:a0e838f7-b0ac-4816-9333-c9a5eb8ff676",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-03-07T20:20:20+00:00",
+    "timestamp": "2026-03-07T23:11:39+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "6fc1e237-1e64-4519-a008-b593496036ca",
+      "bom-ref": "6e4da596-a4b4-4e6a-a2d4-92a97fca879f",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "0644f064-86e7-4e4b-bde5-3d86273edea3",
+      "bom-ref": "362698de-984a-4fec-bbf1-4418723a4cdf",
       "type": "application",
       "name": "package-lock.json",
       "properties": [
@@ -1505,10 +1505,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/minimatch@5.1.6",
+      "bom-ref": "pkg:npm/minimatch@5.1.9",
       "type": "library",
       "name": "minimatch",
-      "version": "5.1.6",
+      "version": "5.1.9",
       "licenses": [
         {
           "license": {
@@ -1516,11 +1516,11 @@
           }
         }
       ],
-      "purl": "pkg:npm/minimatch@5.1.6",
+      "purl": "pkg:npm/minimatch@5.1.9",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "minimatch@5.1.6"
+          "value": "minimatch@5.1.9"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2899,7 +2899,7 @@
   ],
   "dependencies": [
     {
-      "ref": "0644f064-86e7-4e4b-bde5-3d86273edea3",
+      "ref": "362698de-984a-4fec-bbf1-4418723a4cdf",
       "dependsOn": [
         "pkg:npm/body-parser@1.20.4",
         "pkg:npm/cookie-parser@1.4.7",
@@ -2915,9 +2915,9 @@
       ]
     },
     {
-      "ref": "6fc1e237-1e64-4519-a008-b593496036ca",
+      "ref": "6e4da596-a4b4-4e6a-a2d4-92a97fca879f",
       "dependsOn": [
-        "0644f064-86e7-4e4b-bde5-3d86273edea3"
+        "362698de-984a-4fec-bbf1-4418723a4cdf"
       ]
     },
     {
@@ -3143,7 +3143,7 @@
     {
       "ref": "pkg:npm/filelist@1.0.4",
       "dependsOn": [
-        "pkg:npm/minimatch@5.1.6"
+        "pkg:npm/minimatch@5.1.9"
       ]
     },
     {
@@ -3301,7 +3301,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/minimatch@5.1.6",
+      "ref": "pkg:npm/minimatch@5.1.9",
       "dependsOn": [
         "pkg:npm/brace-expansion@2.0.2"
       ]

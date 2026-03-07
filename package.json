@@ -11,9 +11,11 @@
     "report": "npm run report:complexity && npm run report:governance",
     "ci": "npm run lint && npm test && npm run report",
     "prepare": "husky",
+    "postinstall": "node scripts/postinstall-security.js",
     "security:sbom": "trivy fs --format cyclonedx -o security/sbom.json .",
     "security:scan": "trivy fs --scanners vuln --format table .",
-    "security:scan:json": "trivy fs --scanners vuln --format json -o security/reports/vuln-latest.json ."
+    "security:scan:json": "trivy fs --scanners vuln --format json -o security/reports/vuln-latest.json .",
+    "security:update": "node scripts/postinstall-security.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
