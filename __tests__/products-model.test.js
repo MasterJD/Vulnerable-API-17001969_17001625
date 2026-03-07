@@ -38,7 +38,7 @@ describe('Products Model', () => {
 
   // ---- getProduct() ----
   describe('getProduct()', () => {
-    test('should return a single product by ID', async () => {
+    test('should return a single product by ID using parameterized query', async () => {
       const mockProduct = { id: 3, name: 'Widget', description: 'A widget', price: 15, image: 'w.jpg' };
       mockDb.one.mockResolvedValueOnce(mockProduct);
 
@@ -47,7 +47,10 @@ describe('Products Model', () => {
       expect(result).toEqual(mockProduct);
 
       const query = mockDb.one.mock.calls[0][0];
-      expect(query).toContain("id = '3'");
+      const params = mockDb.one.mock.calls[0][1];
+      // Security: query must use parameterized placeholders
+      expect(query).toContain('id = $1');
+      expect(params).toEqual([3]);
     });
 
     test('should reject when product is not found', async () => {
@@ -59,7 +62,7 @@ describe('Products Model', () => {
 
   // ---- search() ----
   describe('search()', () => {
-    test('should search products by name or description', async () => {
+    test('should search products by name or description using parameterized query', async () => {
       const mockResults = [{ id: 1, name: 'Rocket', description: 'USB rocket', price: 50, image: 'r.jpg' }];
       mockDb.many.mockResolvedValueOnce(mockResults);
 
@@ -68,8 +71,11 @@ describe('Products Model', () => {
       expect(result).toEqual(mockResults);
 
       const query = mockDb.many.mock.calls[0][0];
+      const params = mockDb.many.mock.calls[0][1];
+      // Security: query must use parameterized placeholders
       expect(query).toContain('ILIKE');
-      expect(query).toContain('rocket');
+      expect(query).toContain('$1');
+      expect(params).toEqual(['%rocket%']);
     });
 
     test('should return empty when no matches found', async () => {
@@ -81,7 +87,7 @@ describe('Products Model', () => {
 
   // ---- purchase() ----
   describe('purchase()', () => {
-    test('should insert a purchase record', async () => {
+    test('should insert a purchase record using parameterized query', async () => {
       mockDb.one.mockResolvedValueOnce({ id: 1 });
 
       const cart = {
@@ -100,15 +106,18 @@ describe('Products Model', () => {
       expect(result).toEqual({ id: 1 });
 
       const query = mockDb.one.mock.calls[0][0];
+      const params = mockDb.one.mock.calls[0][1];
+      // Security: query must use parameterized placeholders, not literal values
       expect(query).toContain('INSERT INTO purchases');
-      expect(query).toContain('test@test.com');
-      expect(query).toContain('Widget');
+      expect(query).toContain('$1');
+      expect(params).toContain('test@test.com');
+      expect(params).toContain('Widget');
     });
   });
 
   // ---- getPurchased() ----
   describe('getPurchased()', () => {
-    test('should return all purchases for a given user', async () => {
+    test('should return all purchases for a given user using parameterized query', async () => {
       const mockPurchases = [
         { id: 1, product_id: 1, product_name: 'Widget', user_name: 'admin', mail: 'a@b.com', address: '123', phone: '555', ship_date: '2025-01-01', price: 10 },
       ];
@@ -119,7 +128,10 @@ describe('Products Model', () => {
       expect(result).toEqual(mockPurchases);
 
       const query = mockDb.many.mock.calls[0][0];
-      expect(query).toContain("user_name = 'admin'");
+      const params = mockDb.many.mock.calls[0][1];
+      // Security: query must use parameterized placeholders
+      expect(query).toContain('user_name = $1');
+      expect(params).toEqual(['admin']);
     });
 
     test('should reject when user has no purchases', async () => {

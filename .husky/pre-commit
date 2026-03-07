@@ -1,0 +1,42 @@
+# ===========================================================================
+# PRE-COMMIT HOOK: Secret Detection
+# ===========================================================================
+# Scans staged files for hardcoded secrets (API keys, tokens, passwords).
+# Blocks the commit if any secret pattern is detected.
+# Part of Delivery 3: Security Hardening (DevSecOps)
+# ===========================================================================
+
+echo "Running pre-commit secret detection scan..."
+
+# Define secret patterns to search for in staged changes
+SECRET_PATTERNS="API_KEY=|SECRET=|TOKEN=|PASSWORD=|PRIVATE_KEY=|AWS_ACCESS_KEY|AWS_SECRET_KEY|DB_PASSWORD=|SESSION_SECRET="
+
+# Files excluded from secret scanning (hooks, docs, test fixtures, reports)
+EXCLUDED_PATHS="\.husky/|\.md$|__tests__/|security/|\.yml$|\.yaml$"
+
+# Get list of staged files, excluding safe paths
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -vE "$EXCLUDED_PATHS")
+
+if [ -z "$STAGED_FILES" ]; then
+  echo "No scannable files staged. Proceeding with commit."
+  exit 0
+fi
+
+# Scan only the relevant staged file diffs for secret patterns
+if echo "$STAGED_FILES" | xargs git diff --cached -- | grep -iE "$SECRET_PATTERNS" > /dev/null 2>&1; then
+  echo ""
+  echo "============================================================"
+  echo "  ERROR: Secret detected in staged files. Commit blocked."
+  echo "============================================================"
+  echo ""
+  echo "The following secret patterns were found in your staged changes:"
+  echo ""
+  echo "$STAGED_FILES" | xargs git diff --cached -- | grep -inE "$SECRET_PATTERNS" || true
+  echo ""
+  echo "Please remove any hardcoded secrets before committing."
+  echo "Use environment variables or a .env file instead."
+  echo ""
+  exit 1
+fi
+
+echo "No secrets detected. Proceeding with commit."

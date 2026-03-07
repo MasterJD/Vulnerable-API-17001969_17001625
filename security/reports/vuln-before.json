@@ -1,0 +1,3021 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.69.3"
+  },
+  "ReportID": "019cc9f5-c6bb-76de-823c-ff01a2fb4882",
+  "CreatedAt": "2026-03-07T14:20:53.5634503-06:00",
+  "ArtifactID": "sha256:f64a6d1aa4db23dab1196ba9d650ef415260de58deae9dafbec50d4045668c16",
+  "ArtifactName": ".",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "RepoURL": "https://github.com/MasterJD/Vulnerable-API-17001969_17001625.git",
+    "Branch": "dev",
+    "Commit": "3c386e66b17050e3fcc45662e2573f0c6ab0d0a0",
+    "CommitMsg": "Document location update for previous task (Delivery 2)",
+    "Author": "MasterJD \u003c17001625@galileo.edu\u003e",
+    "Committer": "MasterJD \u003c17001625@galileo.edu\u003e"
+  },
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Packages": [
+        {
+          "ID": "body-parser@1.20.4",
+          "Name": "body-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/body-parser@1.20.4",
+            "UID": "5ba425c3591a295f"
+          },
+          "Version": "1.20.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "bytes@3.1.2",
+            "content-type@1.0.5",
+            "debug@2.6.9",
+            "depd@2.0.0",
+            "destroy@1.2.0",
+            "http-errors@2.0.1",
+            "iconv-lite@0.4.24",
+            "on-finished@2.4.1",
+            "qs@6.14.2",
+            "raw-body@2.5.3",
+            "type-is@1.6.18",
+            "unpipe@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1661,
+              "EndLine": 1684
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie-parser@1.4.7",
+          "Name": "cookie-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie-parser@1.4.7",
+            "UID": "b12c91a28b2327ae"
+          },
+          "Version": "1.4.7",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "cookie-signature@1.0.6",
+            "cookie@0.7.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2022,
+              "EndLine": 2034
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "debug@4.4.3",
+          "Name": "debug",
+          "Identifier": {
+            "PURL": "pkg:npm/debug@4.4.3",
+            "UID": "1492d92525fe6983"
+          },
+          "Version": "4.4.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "ms@2.1.3"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2094,
+              "EndLine": 2110
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ejs@3.1.10",
+          "Name": "ejs",
+          "Identifier": {
+            "PURL": "pkg:npm/ejs@3.1.10",
+            "UID": "502346c0efd38617"
+          },
+          "Version": "3.1.10",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "jake@10.9.4"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2236,
+              "EndLine": 2250
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "express@4.22.1",
+          "Name": "express",
+          "Identifier": {
+            "PURL": "pkg:npm/express@4.22.1",
+            "UID": "f06a651d71c2156c"
+          },
+          "Version": "4.22.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "accepts@1.3.8",
+            "array-flatten@1.1.1",
+            "body-parser@1.20.4",
+            "content-disposition@0.5.4",
+            "content-type@1.0.5",
+            "cookie-signature@1.0.6",
+            "cookie@0.7.2",
+            "debug@2.6.9",
+            "depd@2.0.0",
+            "encodeurl@2.0.0",
+            "escape-html@1.0.3",
+            "etag@1.8.1",
+            "finalhandler@1.3.2",
+            "fresh@0.5.2",
+            "http-errors@2.0.1",
+            "merge-descriptors@1.0.3",
+            "methods@1.1.2",
+            "on-finished@2.4.1",
+            "parseurl@1.3.3",
+            "path-to-regexp@0.1.12",
+            "proxy-addr@2.0.7",
+            "qs@6.14.2",
+            "range-parser@1.2.1",
+            "safe-buffer@5.2.1",
+            "send@0.19.2",
+            "serve-static@1.16.3",
+            "setprototypeof@1.2.0",
+            "statuses@2.0.2",
+            "type-is@1.6.18",
+            "utils-merge@1.0.1",
+            "vary@1.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2620,
+              "EndLine": 2665
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "express-ejs-layouts@2.5.1",
+          "Name": "express-ejs-layouts",
+          "Identifier": {
+            "PURL": "pkg:npm/express-ejs-layouts@2.5.1",
+            "UID": "627d245928b7038a"
+          },
+          "Version": "2.5.1",
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 2666,
+              "EndLine": 2670
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "express-session@1.19.0",
+          "Name": "express-session",
+          "Identifier": {
+            "PURL": "pkg:npm/express-session@1.19.0",
+            "UID": "be423a9d4a77c86e"
+          },
+          "Version": "1.19.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "cookie-signature@1.0.7",
+            "cookie@0.7.2",
+            "debug@2.6.9",
+            "depd@2.0.0",
+            "on-headers@1.1.0",
+            "parseurl@1.3.3",
+            "safe-buffer@5.2.1",
+            "uid-safe@2.1.5"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2671,
+              "EndLine": 2693
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "log4js@6.9.1",
+          "Name": "log4js",
+          "Identifier": {
+            "PURL": "pkg:npm/log4js@6.9.1",
+            "UID": "80784c4946d0c69a"
+          },
+          "Version": "6.9.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "date-format@4.0.14",
+            "debug@4.4.3",
+            "flatted@3.3.3",
+            "rfdc@1.4.1",
+            "streamroller@3.1.5"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4305,
+              "EndLine": 4320
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "morgan@1.10.1",
+          "Name": "morgan",
+          "Identifier": {
+            "PURL": "pkg:npm/morgan@1.10.1",
+            "UID": "cc4b6eba3e620981"
+          },
+          "Version": "1.10.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "basic-auth@2.0.1",
+            "debug@2.6.9",
+            "depd@2.0.0",
+            "on-finished@2.3.0",
+            "on-headers@1.1.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4482,
+              "EndLine": 4497
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-promise@11.15.0",
+          "Name": "pg-promise",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-promise@11.15.0",
+            "UID": "fde1ed9ed95a1e29"
+          },
+          "Version": "11.15.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "assert-options@0.8.3",
+            "pg-minify@1.8.0",
+            "pg-query-stream@4.10.3",
+            "pg@8.16.3",
+            "spex@3.4.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4865,
+              "EndLine": 4882
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "serve-favicon@2.5.1",
+          "Name": "serve-favicon",
+          "Identifier": {
+            "PURL": "pkg:npm/serve-favicon@2.5.1",
+            "UID": "c9bae838cf2967aa"
+          },
+          "Version": "2.5.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "etag@1.8.1",
+            "fresh@0.5.2",
+            "ms@2.1.3",
+            "parseurl@1.3.3",
+            "safe-buffer@5.2.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5466,
+              "EndLine": 5481
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "accepts@1.3.8",
+          "Name": "accepts",
+          "Identifier": {
+            "PURL": "pkg:npm/accepts@1.3.8",
+            "UID": "663b45c4847439cd"
+          },
+          "Version": "1.3.8",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "mime-types@2.1.35",
+            "negotiator@0.6.3"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1344,
+              "EndLine": 1356
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "array-flatten@1.1.1",
+          "Name": "array-flatten",
+          "Identifier": {
+            "PURL": "pkg:npm/array-flatten@1.1.1",
+            "UID": "19d24d6dff533317"
+          },
+          "Version": "1.1.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1473,
+              "EndLine": 1478
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "assert-options@0.8.3",
+          "Name": "assert-options",
+          "Identifier": {
+            "PURL": "pkg:npm/assert-options@0.8.3",
+            "UID": "8d5ca9fe7e9a3c9f"
+          },
+          "Version": "0.8.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1486,
+              "EndLine": 1494
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "async@3.2.6",
+          "Name": "async",
+          "Identifier": {
+            "PURL": "pkg:npm/async@3.2.6",
+            "UID": "5684ac3ae4ff5d70"
+          },
+          "Version": "3.2.6",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1495,
+              "EndLine": 1500
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "balanced-match@1.0.2",
+          "Name": "balanced-match",
+          "Identifier": {
+            "PURL": "pkg:npm/balanced-match@1.0.2",
+            "UID": "3bd4e86773ee1c4e"
+          },
+          "Version": "1.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1624,
+              "EndLine": 1629
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "basic-auth@2.0.1",
+          "Name": "basic-auth",
+          "Identifier": {
+            "PURL": "pkg:npm/basic-auth@2.0.1",
+            "UID": "f9767351b2c4b1bd"
+          },
+          "Version": "2.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safe-buffer@5.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1643,
+              "EndLine": 1654
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "brace-expansion@2.0.2",
+          "Name": "brace-expansion",
+          "Identifier": {
+            "PURL": "pkg:npm/brace-expansion@2.0.2",
+            "UID": "d07313d485047928"
+          },
+          "Version": "2.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "balanced-match@1.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1700,
+              "EndLine": 1708
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "bytes@3.1.2",
+          "Name": "bytes",
+          "Identifier": {
+            "PURL": "pkg:npm/bytes@3.1.2",
+            "UID": "af36c56c42e2e37d"
+          },
+          "Version": "3.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1773,
+              "EndLine": 1781
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "call-bind-apply-helpers@1.0.2",
+          "Name": "call-bind-apply-helpers",
+          "Identifier": {
+            "PURL": "pkg:npm/call-bind-apply-helpers@1.0.2",
+            "UID": "73ba36b2ab744cda"
+          },
+          "Version": "1.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "es-errors@1.3.0",
+            "function-bind@1.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1782,
+              "EndLine": 1794
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "call-bound@1.0.4",
+          "Name": "call-bound",
+          "Identifier": {
+            "PURL": "pkg:npm/call-bound@1.0.4",
+            "UID": "5683941bdee56ea3"
+          },
+          "Version": "1.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "call-bind-apply-helpers@1.0.2",
+            "get-intrinsic@1.3.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1795,
+              "EndLine": 1810
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "content-disposition@0.5.4",
+          "Name": "content-disposition",
+          "Identifier": {
+            "PURL": "pkg:npm/content-disposition@0.5.4",
+            "UID": "6468a9540145dc5d"
+          },
+          "Version": "0.5.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safe-buffer@5.2.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1985,
+              "EndLine": 1996
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "content-type@1.0.5",
+          "Name": "content-type",
+          "Identifier": {
+            "PURL": "pkg:npm/content-type@1.0.5",
+            "UID": "7d895d76c6178ad4"
+          },
+          "Version": "1.0.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1997,
+              "EndLine": 2005
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie@0.7.2",
+          "Name": "cookie",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie@0.7.2",
+            "UID": "c36e4810469a06f5"
+          },
+          "Version": "0.7.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2013,
+              "EndLine": 2021
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie-signature@1.0.6",
+          "Name": "cookie-signature",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie-signature@1.0.6",
+            "UID": "657acf65f2368a9f"
+          },
+          "Version": "1.0.6",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2035,
+              "EndLine": 2040
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "cookie-signature@1.0.7",
+          "Name": "cookie-signature",
+          "Identifier": {
+            "PURL": "pkg:npm/cookie-signature@1.0.7",
+            "UID": "836d8d3bbbb5dd4a"
+          },
+          "Version": "1.0.7",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2694,
+              "EndLine": 2699
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "date-format@4.0.14",
+          "Name": "date-format",
+          "Identifier": {
+            "PURL": "pkg:npm/date-format@4.0.14",
+            "UID": "9f397cade01b3363"
+          },
+          "Version": "4.0.14",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2085,
+              "EndLine": 2093
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "debug@2.6.9",
+          "Name": "debug",
+          "Identifier": {
+            "PURL": "pkg:npm/debug@2.6.9",
+            "UID": "63bd4ff7c5565ba5"
+          },
+          "Version": "2.6.9",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "ms@2.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 1685,
+              "EndLine": 1693
+            },
+            {
+              "StartLine": 2700,
+              "EndLine": 2708
+            },
+            {
+              "StartLine": 2715,
+              "EndLine": 2723
+            },
+            {
+              "StartLine": 2831,
+              "EndLine": 2839
+            },
+            {
+              "StartLine": 4498,
+              "EndLine": 4506
+            },
+            {
+              "StartLine": 5451,
+              "EndLine": 5459
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "depd@2.0.0",
+          "Name": "depd",
+          "Identifier": {
+            "PURL": "pkg:npm/depd@2.0.0",
+            "UID": "90a132ba6f9d38f0"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2153,
+              "EndLine": 2161
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "destroy@1.2.0",
+          "Name": "destroy",
+          "Identifier": {
+            "PURL": "pkg:npm/destroy@1.2.0",
+            "UID": "9e4814bd0e24a4b1"
+          },
+          "Version": "1.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2162,
+              "EndLine": 2171
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "dunder-proto@1.0.1",
+          "Name": "dunder-proto",
+          "Identifier": {
+            "PURL": "pkg:npm/dunder-proto@1.0.1",
+            "UID": "302c3e1555557714"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "call-bind-apply-helpers@1.0.2",
+            "es-errors@1.3.0",
+            "gopd@1.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2216,
+              "EndLine": 2229
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ee-first@1.1.1",
+          "Name": "ee-first",
+          "Identifier": {
+            "PURL": "pkg:npm/ee-first@1.1.1",
+            "UID": "d83ab30bfeb0645e"
+          },
+          "Version": "1.1.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2230,
+              "EndLine": 2235
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "encodeurl@2.0.0",
+          "Name": "encodeurl",
+          "Identifier": {
+            "PURL": "pkg:npm/encodeurl@2.0.0",
+            "UID": "4de33f6b2bd70da0"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2278,
+              "EndLine": 2286
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "es-define-property@1.0.1",
+          "Name": "es-define-property",
+          "Identifier": {
+            "PURL": "pkg:npm/es-define-property@1.0.1",
+            "UID": "b209b344deea4d06"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2297,
+              "EndLine": 2305
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "es-errors@1.3.0",
+          "Name": "es-errors",
+          "Identifier": {
+            "PURL": "pkg:npm/es-errors@1.3.0",
+            "UID": "ca7e7a93aee7e60c"
+          },
+          "Version": "1.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2306,
+              "EndLine": 2314
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "es-object-atoms@1.1.1",
+          "Name": "es-object-atoms",
+          "Identifier": {
+            "PURL": "pkg:npm/es-object-atoms@1.1.1",
+            "UID": "696d4e51c0074318"
+          },
+          "Version": "1.1.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "es-errors@1.3.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2315,
+              "EndLine": 2326
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "escape-html@1.0.3",
+          "Name": "escape-html",
+          "Identifier": {
+            "PURL": "pkg:npm/escape-html@1.0.3",
+            "UID": "8497eaebd55b4142"
+          },
+          "Version": "1.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2353,
+              "EndLine": 2358
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "etag@1.8.1",
+          "Name": "etag",
+          "Identifier": {
+            "PURL": "pkg:npm/etag@1.8.1",
+            "UID": "c9af8c6074409686"
+          },
+          "Version": "1.8.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2561,
+              "EndLine": 2569
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "filelist@1.0.4",
+          "Name": "filelist",
+          "Identifier": {
+            "PURL": "pkg:npm/filelist@1.0.4",
+            "UID": "992ff4529ff880ff"
+          },
+          "Version": "1.0.4",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "minimatch@5.1.6"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2791,
+              "EndLine": 2799
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "finalhandler@1.3.2",
+          "Name": "finalhandler",
+          "Identifier": {
+            "PURL": "pkg:npm/finalhandler@1.3.2",
+            "UID": "34fc939e926681d7"
+          },
+          "Version": "1.3.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "debug@2.6.9",
+            "encodeurl@2.0.0",
+            "escape-html@1.0.3",
+            "on-finished@2.4.1",
+            "parseurl@1.3.3",
+            "statuses@2.0.2",
+            "unpipe@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2813,
+              "EndLine": 2830
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "flatted@3.3.3",
+          "Name": "flatted",
+          "Identifier": {
+            "PURL": "pkg:npm/flatted@3.3.3",
+            "UID": "8d5d7e2cb8519cb2"
+          },
+          "Version": "3.3.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2878,
+              "EndLine": 2883
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "forwarded@0.2.0",
+          "Name": "forwarded",
+          "Identifier": {
+            "PURL": "pkg:npm/forwarded@0.2.0",
+            "UID": "705818e26b7e2212"
+          },
+          "Version": "0.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2919,
+              "EndLine": 2927
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "fresh@0.5.2",
+          "Name": "fresh",
+          "Identifier": {
+            "PURL": "pkg:npm/fresh@0.5.2",
+            "UID": "e50038e3c64b45ff"
+          },
+          "Version": "0.5.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2928,
+              "EndLine": 2936
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "fs-extra@8.1.0",
+          "Name": "fs-extra",
+          "Identifier": {
+            "PURL": "pkg:npm/fs-extra@8.1.0",
+            "UID": "63c5b51b7427dbd5"
+          },
+          "Version": "8.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "graceful-fs@4.2.11",
+            "jsonfile@4.0.0",
+            "universalify@0.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 2937,
+              "EndLine": 2950
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "function-bind@1.1.2",
+          "Name": "function-bind",
+          "Identifier": {
+            "PURL": "pkg:npm/function-bind@1.1.2",
+            "UID": "54b72934a8c18db6"
+          },
+          "Version": "1.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 2973,
+              "EndLine": 2981
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "get-intrinsic@1.3.0",
+          "Name": "get-intrinsic",
+          "Identifier": {
+            "PURL": "pkg:npm/get-intrinsic@1.3.0",
+            "UID": "6413a4ff5f0e33f1"
+          },
+          "Version": "1.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "call-bind-apply-helpers@1.0.2",
+            "es-define-property@1.0.1",
+            "es-errors@1.3.0",
+            "es-object-atoms@1.1.1",
+            "function-bind@1.1.2",
+            "get-proto@1.0.1",
+            "gopd@1.2.0",
+            "has-symbols@1.1.0",
+            "hasown@2.0.2",
+            "math-intrinsics@1.1.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3002,
+              "EndLine": 3025
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "get-proto@1.0.1",
+          "Name": "get-proto",
+          "Identifier": {
+            "PURL": "pkg:npm/get-proto@1.0.1",
+            "UID": "eba344e7349c6f9f"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "dunder-proto@1.0.1",
+            "es-object-atoms@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3036,
+              "EndLine": 3048
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "gopd@1.2.0",
+          "Name": "gopd",
+          "Identifier": {
+            "PURL": "pkg:npm/gopd@1.2.0",
+            "UID": "2ec29a804018059e"
+          },
+          "Version": "1.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 3137,
+              "EndLine": 3148
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "graceful-fs@4.2.11",
+          "Name": "graceful-fs",
+          "Identifier": {
+            "PURL": "pkg:npm/graceful-fs@4.2.11",
+            "UID": "57b03b7961516812"
+          },
+          "Version": "4.2.11",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 3149,
+              "EndLine": 3154
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "has-symbols@1.1.0",
+          "Name": "has-symbols",
+          "Identifier": {
+            "PURL": "pkg:npm/has-symbols@1.1.0",
+            "UID": "2f496fcce61552e7"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 3172,
+              "EndLine": 3183
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "hasown@2.0.2",
+          "Name": "hasown",
+          "Identifier": {
+            "PURL": "pkg:npm/hasown@2.0.2",
+            "UID": "a537f461e8b3b458"
+          },
+          "Version": "2.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "function-bind@1.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3200,
+              "EndLine": 3211
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "http-errors@2.0.1",
+          "Name": "http-errors",
+          "Identifier": {
+            "PURL": "pkg:npm/http-errors@2.0.1",
+            "UID": "6b386f358b47e2db"
+          },
+          "Version": "2.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "depd@2.0.0",
+            "inherits@2.0.4",
+            "setprototypeof@1.2.0",
+            "statuses@2.0.2",
+            "toidentifier@1.0.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3219,
+              "EndLine": 3238
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "iconv-lite@0.4.24",
+          "Name": "iconv-lite",
+          "Identifier": {
+            "PURL": "pkg:npm/iconv-lite@0.4.24",
+            "UID": "fa0327788642a95d"
+          },
+          "Version": "0.4.24",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "safer-buffer@2.1.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3249,
+              "EndLine": 3260
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "inherits@2.0.4",
+          "Name": "inherits",
+          "Identifier": {
+            "PURL": "pkg:npm/inherits@2.0.4",
+            "UID": "d004891c8eb46597"
+          },
+          "Version": "2.0.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 3330,
+              "EndLine": 3335
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ipaddr.js@1.9.1",
+          "Name": "ipaddr.js",
+          "Identifier": {
+            "PURL": "pkg:npm/ipaddr.js@1.9.1",
+            "UID": "194889659417efae"
+          },
+          "Version": "1.9.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 3336,
+              "EndLine": 3344
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jake@10.9.4",
+          "Name": "jake",
+          "Identifier": {
+            "PURL": "pkg:npm/jake@10.9.4",
+            "UID": "fa43d7eb60390f2d"
+          },
+          "Version": "10.9.4",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "async@3.2.6",
+            "filelist@1.0.4",
+            "picocolors@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 3535,
+              "EndLine": 3551
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "jsonfile@4.0.0",
+          "Name": "jsonfile",
+          "Identifier": {
+            "PURL": "pkg:npm/jsonfile@4.0.0",
+            "UID": "566cb7904d187ff5"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "graceful-fs@4.2.11"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4222,
+              "EndLine": 4230
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "math-intrinsics@1.1.0",
+          "Name": "math-intrinsics",
+          "Identifier": {
+            "PURL": "pkg:npm/math-intrinsics@1.1.0",
+            "UID": "fa753fb7ced165fc"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4370,
+              "EndLine": 4378
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "media-typer@0.3.0",
+          "Name": "media-typer",
+          "Identifier": {
+            "PURL": "pkg:npm/media-typer@0.3.0",
+            "UID": "cfe83483115dcce3"
+          },
+          "Version": "0.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4379,
+              "EndLine": 4387
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "merge-descriptors@1.0.3",
+          "Name": "merge-descriptors",
+          "Identifier": {
+            "PURL": "pkg:npm/merge-descriptors@1.0.3",
+            "UID": "64ce4f5dd7f694f2"
+          },
+          "Version": "1.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4388,
+              "EndLine": 4396
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "methods@1.1.2",
+          "Name": "methods",
+          "Identifier": {
+            "PURL": "pkg:npm/methods@1.1.2",
+            "UID": "3f91d2d4d793a705"
+          },
+          "Version": "1.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4404,
+              "EndLine": 4412
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime@1.6.0",
+          "Name": "mime",
+          "Identifier": {
+            "PURL": "pkg:npm/mime@1.6.0",
+            "UID": "85890ff8f08f36a0"
+          },
+          "Version": "1.6.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4427,
+              "EndLine": 4438
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime-db@1.52.0",
+          "Name": "mime-db",
+          "Identifier": {
+            "PURL": "pkg:npm/mime-db@1.52.0",
+            "UID": "ebad6dbb6cfdfb8f"
+          },
+          "Version": "1.52.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4439,
+              "EndLine": 4447
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "mime-types@2.1.35",
+          "Name": "mime-types",
+          "Identifier": {
+            "PURL": "pkg:npm/mime-types@2.1.35",
+            "UID": "c1d492e0210aa4cf"
+          },
+          "Version": "2.1.35",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "mime-db@1.52.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4448,
+              "EndLine": 4459
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "minimatch@5.1.6",
+          "Name": "minimatch",
+          "Identifier": {
+            "PURL": "pkg:npm/minimatch@5.1.6",
+            "UID": "86f29dc16451bf2f"
+          },
+          "Version": "5.1.6",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "brace-expansion@2.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4470,
+              "EndLine": 4481
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ms@2.0.0",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.0.0",
+            "UID": "7b8b961d65568968"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1694,
+              "EndLine": 1699
+            },
+            {
+              "StartLine": 2709,
+              "EndLine": 2714
+            },
+            {
+              "StartLine": 2724,
+              "EndLine": 2729
+            },
+            {
+              "StartLine": 2840,
+              "EndLine": 2845
+            },
+            {
+              "StartLine": 4507,
+              "EndLine": 4512
+            },
+            {
+              "StartLine": 5460,
+              "EndLine": 5465
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "ms@2.1.3",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.1.3",
+            "UID": "1e6a49b650b23bca"
+          },
+          "Version": "2.1.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4525,
+              "EndLine": 4530
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "negotiator@0.6.3",
+          "Name": "negotiator",
+          "Identifier": {
+            "PURL": "pkg:npm/negotiator@0.6.3",
+            "UID": "52d4c11058198031"
+          },
+          "Version": "0.6.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4538,
+              "EndLine": 4546
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "object-inspect@1.13.4",
+          "Name": "object-inspect",
+          "Identifier": {
+            "PURL": "pkg:npm/object-inspect@1.13.4",
+            "UID": "99a2a3eea0fedb62"
+          },
+          "Version": "1.13.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4584,
+              "EndLine": 4595
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "on-finished@2.3.0",
+          "Name": "on-finished",
+          "Identifier": {
+            "PURL": "pkg:npm/on-finished@2.3.0",
+            "UID": "e71bf41ecad3df11"
+          },
+          "Version": "2.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "ee-first@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4513,
+              "EndLine": 4524
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "on-finished@2.4.1",
+          "Name": "on-finished",
+          "Identifier": {
+            "PURL": "pkg:npm/on-finished@2.4.1",
+            "UID": "918b1cce73e27114"
+          },
+          "Version": "2.4.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "ee-first@1.1.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4596,
+              "EndLine": 4607
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "on-headers@1.1.0",
+          "Name": "on-headers",
+          "Identifier": {
+            "PURL": "pkg:npm/on-headers@1.1.0",
+            "UID": "4535265a658a8df1"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4608,
+              "EndLine": 4616
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "parseurl@1.3.3",
+          "Name": "parseurl",
+          "Identifier": {
+            "PURL": "pkg:npm/parseurl@1.3.3",
+            "UID": "2e4035190bb7e5aa"
+          },
+          "Version": "1.3.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4735,
+              "EndLine": 4743
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "path-to-regexp@0.1.12",
+          "Name": "path-to-regexp",
+          "Identifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.12",
+            "UID": "94bac279a5e95a67"
+          },
+          "Version": "0.1.12",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4781,
+              "EndLine": 4786
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg@8.16.3",
+          "Name": "pg",
+          "Identifier": {
+            "PURL": "pkg:npm/pg@8.16.3",
+            "UID": "5860b73baa912779"
+          },
+          "Version": "8.16.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg-cloudflare@1.3.0",
+            "pg-connection-string@2.11.0",
+            "pg-pool@3.11.0",
+            "pg-protocol@1.11.0",
+            "pg-types@2.2.0",
+            "pgpass@1.0.5"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4883,
+              "EndLine": 4909
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg@8.18.0",
+          "Name": "pg",
+          "Identifier": {
+            "PURL": "pkg:npm/pg@8.18.0",
+            "UID": "3db0cafed781c359"
+          },
+          "Version": "8.18.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg-cloudflare@1.3.0",
+            "pg-connection-string@2.11.0",
+            "pg-pool@3.11.0",
+            "pg-protocol@1.11.0",
+            "pg-types@2.2.0",
+            "pgpass@1.0.5"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4787,
+              "EndLine": 4814
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-cloudflare@1.3.0",
+          "Name": "pg-cloudflare",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-cloudflare@1.3.0",
+            "UID": "f48df02fa45b1c4e"
+          },
+          "Version": "1.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4815,
+              "EndLine": 4821
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-connection-string@2.11.0",
+          "Name": "pg-connection-string",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-connection-string@2.11.0",
+            "UID": "bcb168f38ad460c4"
+          },
+          "Version": "2.11.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4822,
+              "EndLine": 4827
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-cursor@2.17.0",
+          "Name": "pg-cursor",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-cursor@2.17.0",
+            "UID": "d9a9289545fff74a"
+          },
+          "Version": "2.17.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg@8.18.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4828,
+              "EndLine": 4837
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-int8@1.0.1",
+          "Name": "pg-int8",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-int8@1.0.1",
+            "UID": "b2704a8b8e144894"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4838,
+              "EndLine": 4846
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-minify@1.8.0",
+          "Name": "pg-minify",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-minify@1.8.0",
+            "UID": "8984f2c7eb9ed070"
+          },
+          "Version": "1.8.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4847,
+              "EndLine": 4855
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-pool@3.11.0",
+          "Name": "pg-pool",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-pool@3.11.0",
+            "UID": "82e6a3956cb1450e"
+          },
+          "Version": "3.11.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg@8.18.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4856,
+              "EndLine": 4864
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-protocol@1.11.0",
+          "Name": "pg-protocol",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-protocol@1.11.0",
+            "UID": "197dda91fb2406ad"
+          },
+          "Version": "1.11.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4910,
+              "EndLine": 4915
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-query-stream@4.10.3",
+          "Name": "pg-query-stream",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-query-stream@4.10.3",
+            "UID": "b5e9847568258be6"
+          },
+          "Version": "4.10.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg-cursor@2.17.0",
+            "pg@8.18.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4916,
+              "EndLine": 4928
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pg-types@2.2.0",
+          "Name": "pg-types",
+          "Identifier": {
+            "PURL": "pkg:npm/pg-types@2.2.0",
+            "UID": "49ce0844602371e7"
+          },
+          "Version": "2.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "pg-int8@1.0.1",
+            "postgres-array@2.0.0",
+            "postgres-bytea@1.0.1",
+            "postgres-date@1.0.7",
+            "postgres-interval@1.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4929,
+              "EndLine": 4944
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pgpass@1.0.5",
+          "Name": "pgpass",
+          "Identifier": {
+            "PURL": "pkg:npm/pgpass@1.0.5",
+            "UID": "5a4a76fe3f63b90e"
+          },
+          "Version": "1.0.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "split2@4.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 4945,
+              "EndLine": 4953
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "picocolors@1.1.1",
+          "Name": "picocolors",
+          "Identifier": {
+            "PURL": "pkg:npm/picocolors@1.1.1",
+            "UID": "684561c4fd6ba15a"
+          },
+          "Version": "1.1.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 4954,
+              "EndLine": 4959
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "postgres-array@2.0.0",
+          "Name": "postgres-array",
+          "Identifier": {
+            "PURL": "pkg:npm/postgres-array@2.0.0",
+            "UID": "37095b69edde3d49"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5052,
+              "EndLine": 5060
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "postgres-bytea@1.0.1",
+          "Name": "postgres-bytea",
+          "Identifier": {
+            "PURL": "pkg:npm/postgres-bytea@1.0.1",
+            "UID": "e8a1eacf33dc9ae3"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5061,
+              "EndLine": 5069
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "postgres-date@1.0.7",
+          "Name": "postgres-date",
+          "Identifier": {
+            "PURL": "pkg:npm/postgres-date@1.0.7",
+            "UID": "58afa71f7d6d527"
+          },
+          "Version": "1.0.7",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5070,
+              "EndLine": 5078
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "postgres-interval@1.2.0",
+          "Name": "postgres-interval",
+          "Identifier": {
+            "PURL": "pkg:npm/postgres-interval@1.2.0",
+            "UID": "241784dcaa0337f5"
+          },
+          "Version": "1.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "xtend@4.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5079,
+              "EndLine": 5090
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "proxy-addr@2.0.7",
+          "Name": "proxy-addr",
+          "Identifier": {
+            "PURL": "pkg:npm/proxy-addr@2.0.7",
+            "UID": "d194e5af3903a2b1"
+          },
+          "Version": "2.0.7",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "forwarded@0.2.0",
+            "ipaddr.js@1.9.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5143,
+              "EndLine": 5155
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "qs@6.14.2",
+          "Name": "qs",
+          "Identifier": {
+            "PURL": "pkg:npm/qs@6.14.2",
+            "UID": "4f57b0d037146e2f"
+          },
+          "Version": "6.14.2",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "side-channel@1.1.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5183,
+              "EndLine": 5197
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "random-bytes@1.0.0",
+          "Name": "random-bytes",
+          "Identifier": {
+            "PURL": "pkg:npm/random-bytes@1.0.0",
+            "UID": "e7896e49ae5c51da"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5219,
+              "EndLine": 5227
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "range-parser@1.2.1",
+          "Name": "range-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/range-parser@1.2.1",
+            "UID": "fa9d00698a48cb8e"
+          },
+          "Version": "1.2.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5228,
+              "EndLine": 5236
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "raw-body@2.5.3",
+          "Name": "raw-body",
+          "Identifier": {
+            "PURL": "pkg:npm/raw-body@2.5.3",
+            "UID": "453f8dcc4e77ecf"
+          },
+          "Version": "2.5.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "bytes@3.1.2",
+            "http-errors@2.0.1",
+            "iconv-lite@0.4.24",
+            "unpipe@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5237,
+              "EndLine": 5251
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "rfdc@1.4.1",
+          "Name": "rfdc",
+          "Identifier": {
+            "PURL": "pkg:npm/rfdc@1.4.1",
+            "UID": "ef14978ebcdbf09e"
+          },
+          "Version": "1.4.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5344,
+              "EndLine": 5349
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safe-buffer@5.1.2",
+          "Name": "safe-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safe-buffer@5.1.2",
+            "UID": "e86305169af2492e"
+          },
+          "Version": "5.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 1655,
+              "EndLine": 1660
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safe-buffer@5.2.1",
+          "Name": "safe-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safe-buffer@5.2.1",
+            "UID": "4e12c3b6043dcf81"
+          },
+          "Version": "5.2.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5391,
+              "EndLine": 5410
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safer-buffer@2.1.2",
+          "Name": "safer-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safer-buffer@2.1.2",
+            "UID": "2a2722cdf0bbaa47"
+          },
+          "Version": "2.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5411,
+              "EndLine": 5416
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "send@0.19.2",
+          "Name": "send",
+          "Identifier": {
+            "PURL": "pkg:npm/send@0.19.2",
+            "UID": "3a652255ddf195d6"
+          },
+          "Version": "0.19.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "debug@2.6.9",
+            "depd@2.0.0",
+            "destroy@1.2.0",
+            "encodeurl@2.0.0",
+            "escape-html@1.0.3",
+            "etag@1.8.1",
+            "fresh@0.5.2",
+            "http-errors@2.0.1",
+            "mime@1.6.0",
+            "ms@2.1.3",
+            "on-finished@2.4.1",
+            "range-parser@1.2.1",
+            "statuses@2.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5427,
+              "EndLine": 5450
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "serve-static@1.16.3",
+          "Name": "serve-static",
+          "Identifier": {
+            "PURL": "pkg:npm/serve-static@1.16.3",
+            "UID": "1ce54f3a482acc14"
+          },
+          "Version": "1.16.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "encodeurl@2.0.0",
+            "escape-html@1.0.3",
+            "parseurl@1.3.3",
+            "send@0.19.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5482,
+              "EndLine": 5496
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "setprototypeof@1.2.0",
+          "Name": "setprototypeof",
+          "Identifier": {
+            "PURL": "pkg:npm/setprototypeof@1.2.0",
+            "UID": "faa67fc623a3d910"
+          },
+          "Version": "1.2.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5497,
+              "EndLine": 5502
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "side-channel@1.1.0",
+          "Name": "side-channel",
+          "Identifier": {
+            "PURL": "pkg:npm/side-channel@1.1.0",
+            "UID": "50a10b142ccf08c"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "es-errors@1.3.0",
+            "object-inspect@1.13.4",
+            "side-channel-list@1.0.0",
+            "side-channel-map@1.0.1",
+            "side-channel-weakmap@1.0.2"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5526,
+              "EndLine": 5544
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "side-channel-list@1.0.0",
+          "Name": "side-channel-list",
+          "Identifier": {
+            "PURL": "pkg:npm/side-channel-list@1.0.0",
+            "UID": "96c7decdf7872b62"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "es-errors@1.3.0",
+            "object-inspect@1.13.4"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5545,
+              "EndLine": 5560
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "side-channel-map@1.0.1",
+          "Name": "side-channel-map",
+          "Identifier": {
+            "PURL": "pkg:npm/side-channel-map@1.0.1",
+            "UID": "4726e7b444531c9"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "call-bound@1.0.4",
+            "es-errors@1.3.0",
+            "get-intrinsic@1.3.0",
+            "object-inspect@1.13.4"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5561,
+              "EndLine": 5578
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "side-channel-weakmap@1.0.2",
+          "Name": "side-channel-weakmap",
+          "Identifier": {
+            "PURL": "pkg:npm/side-channel-weakmap@1.0.2",
+            "UID": "d395fd7a292a7ece"
+          },
+          "Version": "1.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "call-bound@1.0.4",
+            "es-errors@1.3.0",
+            "get-intrinsic@1.3.0",
+            "object-inspect@1.13.4",
+            "side-channel-map@1.0.1"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5579,
+              "EndLine": 5597
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "spex@3.4.1",
+          "Name": "spex",
+          "Identifier": {
+            "PURL": "pkg:npm/spex@3.4.1",
+            "UID": "9c097f9696f7bce1"
+          },
+          "Version": "3.4.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5643,
+              "EndLine": 5651
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "split2@4.2.0",
+          "Name": "split2",
+          "Identifier": {
+            "PURL": "pkg:npm/split2@4.2.0",
+            "UID": "2d0a73bcbd875c5a"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5652,
+              "EndLine": 5660
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "statuses@2.0.2",
+          "Name": "statuses",
+          "Identifier": {
+            "PURL": "pkg:npm/statuses@2.0.2",
+            "UID": "1b5c621e9be447c4"
+          },
+          "Version": "2.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5691,
+              "EndLine": 5699
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "streamroller@3.1.5",
+          "Name": "streamroller",
+          "Identifier": {
+            "PURL": "pkg:npm/streamroller@3.1.5",
+            "UID": "ab288ae0a0b35cb8"
+          },
+          "Version": "3.1.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "date-format@4.0.14",
+            "debug@4.4.3",
+            "fs-extra@8.1.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5700,
+              "EndLine": 5713
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "toidentifier@1.0.1",
+          "Name": "toidentifier",
+          "Identifier": {
+            "PURL": "pkg:npm/toidentifier@1.0.1",
+            "UID": "c98af3ccf134843a"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 5940,
+              "EndLine": 5948
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "type-is@1.6.18",
+          "Name": "type-is",
+          "Identifier": {
+            "PURL": "pkg:npm/type-is@1.6.18",
+            "UID": "998f7fbd97790a30"
+          },
+          "Version": "1.6.18",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "media-typer@0.3.0",
+            "mime-types@2.1.35"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5985,
+              "EndLine": 5997
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "uid-safe@2.1.5",
+          "Name": "uid-safe",
+          "Identifier": {
+            "PURL": "pkg:npm/uid-safe@2.1.5",
+            "UID": "b4f62afc3977b302"
+          },
+          "Version": "2.1.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "random-bytes@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 5998,
+              "EndLine": 6009
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "universalify@0.1.2",
+          "Name": "universalify",
+          "Identifier": {
+            "PURL": "pkg:npm/universalify@0.1.2",
+            "UID": "8927eb3f37c17315"
+          },
+          "Version": "0.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 6017,
+              "EndLine": 6025
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "unpipe@1.0.0",
+          "Name": "unpipe",
+          "Identifier": {
+            "PURL": "pkg:npm/unpipe@1.0.0",
+            "UID": "5bf1167dd21ebe71"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 6026,
+              "EndLine": 6034
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "utils-merge@1.0.1",
+          "Name": "utils-merge",
+          "Identifier": {
+            "PURL": "pkg:npm/utils-merge@1.0.1",
+            "UID": "6654cfc5616ed1fa"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 6076,
+              "EndLine": 6084
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "vary@1.1.2",
+          "Name": "vary",
+          "Identifier": {
+            "PURL": "pkg:npm/vary@1.1.2",
+            "UID": "7605d86544b0d8a7"
+          },
+          "Version": "1.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 6100,
+              "EndLine": 6108
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "xtend@4.0.2",
+          "Name": "xtend",
+          "Identifier": {
+            "PURL": "pkg:npm/xtend@4.0.2",
+            "UID": "4c30221df88781c2"
+          },
+          "Version": "4.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 6184,
+              "EndLine": 6192
+            }
+          ],
+          "AnalyzedBy": "npm"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2026-26996",
+          "VendorIDs": [
+            "GHSA-3ppc-4f35-3m26"
+          ],
+          "PkgID": "minimatch@5.1.6",
+          "PkgName": "minimatch",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/minimatch@5.1.6",
+            "UID": "86f29dc16451bf2f"
+          },
+          "InstalledVersion": "5.1.6",
+          "FixedVersion": "10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-26996",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:19d29b8ef9732b1347678493f173b76170e4ba56e95b2601c63b11ebac0318c5",
+          "Title": "minimatch: minimatch: Denial of Service via specially crafted glob patterns",
+          "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Versions 10.2.0 and below are vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive * wildcards followed by a literal character that doesn't appear in the test string. Each * compiles to a separate [^/]*? regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits. The time complexity is O(4^N) where N is the number of * characters. With N=15, a single minimatch() call takes ~2 seconds. With N=34, it hangs effectively forever. Any application that passes user-controlled strings to minimatch() as the pattern argument is vulnerable to DoS. This issue has been fixed in version 10.2.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+              "V40Score": 8.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-26996",
+            "https://github.com/isaacs/minimatch",
+            "https://github.com/isaacs/minimatch/commit/2e111f3a79abc00fa73110195de2c0f2351904f5",
+            "https://github.com/isaacs/minimatch/security/advisories/GHSA-3ppc-4f35-3m26",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-26996",
+            "https://www.cve.org/CVERecord?id=CVE-2026-26996"
+          ],
+          "PublishedDate": "2026-02-20T03:16:01.62Z",
+          "LastModifiedDate": "2026-03-06T21:32:10.65Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-27903",
+          "VendorIDs": [
+            "GHSA-7r86-cg39-jmmj"
+          ],
+          "PkgID": "minimatch@5.1.6",
+          "PkgName": "minimatch",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/minimatch@5.1.6",
+            "UID": "86f29dc16451bf2f"
+          },
+          "InstalledVersion": "5.1.6",
+          "FixedVersion": "10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27903",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:c3c2f360a26fb53a8f0ba3cc8aa4691dad5d8f54e257914d42ae5cbc9be34e57",
+          "Title": "minimatch: minimatch: Denial of Service due to unbounded recursive backtracking via crafted glob patterns",
+          "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Prior to version 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.3, `matchOne()` performs unbounded recursive backtracking when a glob pattern contains multiple non-adjacent `**` (GLOBSTAR) segments and the input path does not match. The time complexity is O(C(n, k)) -- binomial -- where `n` is the number of path segments and `k` is the number of globstars. With k=11 and n=30, a call to the default `minimatch()` API stalls for roughly 5 seconds. With k=13, it exceeds 15 seconds. No memoization or call budget exists to bound this behavior. Any application where an attacker can influence the glob pattern passed to `minimatch()` is vulnerable. The realistic attack surface includes build tools and task runners that accept user-supplied glob arguments (ESLint, Webpack, Rollup config), multi-tenant systems where one tenant configures glob-based rules that run in a shared process, admin or developer interfaces that accept ignore-rule or filter configuration as globs, and CI/CD pipelines that evaluate user-submitted config files containing glob patterns. An attacker who can place a crafted pattern into any of these paths can stall the Node.js event loop for tens of seconds per invocation. The pattern is 56 bytes for a 5-second stall and does not require authentication in contexts where pattern input is part of the feature. Versions 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.3 fix the issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-407"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-27903",
+            "https://github.com/isaacs/minimatch",
+            "https://github.com/isaacs/minimatch/commit/0bf499aa45f5059b56809cc3b75ff3eafeb8d748",
+            "https://github.com/isaacs/minimatch/security/advisories/GHSA-7r86-cg39-jmmj",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-27903",
+            "https://www.cve.org/CVERecord?id=CVE-2026-27903"
+          ],
+          "PublishedDate": "2026-02-26T02:16:21.353Z",
+          "LastModifiedDate": "2026-02-27T17:21:22.37Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-27904",
+          "VendorIDs": [
+            "GHSA-23c5-xmqv-rm74"
+          ],
+          "PkgID": "minimatch@5.1.6",
+          "PkgName": "minimatch",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/minimatch@5.1.6",
+            "UID": "86f29dc16451bf2f"
+          },
+          "InstalledVersion": "5.1.6",
+          "FixedVersion": "10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27904",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9f440d004630a888d338ef6b0030725f08b5ab66c57ba21b31b63243a980d526",
+          "Title": "minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions",
+          "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Prior to version 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.4, nested `*()` extglobs produce regexps with nested unbounded quantifiers (e.g. `(?:(?:a|b)*)*`), which exhibit catastrophic backtracking in V8. With a 12-byte pattern `*(*(*(a|b)))` and an 18-byte non-matching input, `minimatch()` stalls for over 7 seconds. Adding a single nesting level or a few input characters pushes this to minutes. This is the most severe finding: it is triggered by the default `minimatch()` API with no special options, and the minimum viable pattern is only 12 bytes. The same issue affects `+()` extglobs equally. Versions 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.4 fix the issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-27904",
+            "https://github.com/isaacs/minimatch",
+            "https://github.com/isaacs/minimatch/commit/11d0df6165d15a955462316b26d52e5efae06fce",
+            "https://github.com/isaacs/minimatch/security/advisories/GHSA-23c5-xmqv-rm74",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-27904",
+            "https://www.cve.org/CVERecord?id=CVE-2026-27904"
+          ],
+          "PublishedDate": "2026-02-26T02:16:21.76Z",
+          "LastModifiedDate": "2026-02-27T17:16:23.773Z"
+        }
+      ]
+    }
+  ]
+}

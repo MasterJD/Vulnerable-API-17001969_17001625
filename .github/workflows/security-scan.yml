@@ -1,0 +1,85 @@
+# =========================================================================
+# SECURITY CI PIPELINE
+# =========================================================================
+# Runs Trivy vulnerability scanning and SBOM generation on every push
+# and pull request. Integrates with the existing Governance CI pipeline
+# without interference.
+#
+# Part of Delivery 3: Security Hardening (DevSecOps)
+# =========================================================================
+
+name: Security Scan
+
+# ---------------------------------------------------------------------------
+# Triggers: run on ALL branches and all pull requests
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  security:
+    name: Trivy Vulnerability Scan & SBOM
+    runs-on: ubuntu-latest
+
+    steps:
+      # ----- 1. Checkout source code -----
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ----- 2. Set up Node.js -----
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # ----- 3. Install dependencies (deterministic, from lock file) -----
+      - name: Install dependencies
+        run: npm ci
+
+      # ----- 4. Install Trivy -----
+      - name: Install Trivy
+        run: |
+          sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install -y trivy
+
+      # ----- 5. Generate SBOM (CycloneDX format) -----
+      - name: Generate SBOM
+        run: |
+          mkdir -p security
+          trivy fs --format cyclonedx -o security/sbom.json .
+
+      # ----- 6. Trivy Vulnerability Scan -----
+      - name: Run Trivy vulnerability scan
+        run: |
+          mkdir -p security/reports
+          trivy fs --scanners vuln --format json -o security/reports/vuln-ci.json .
+          trivy fs --scanners vuln --format table .
+
+      # ----- 7. Trivy scan with exit code (fail on HIGH/CRITICAL) -----
+      - name: Trivy security gate
+        run: |
+          trivy fs --scanners vuln --exit-code 1 --severity HIGH,CRITICAL .
+
+      # ----- 8. Upload SBOM as artifact -----
+      - name: Upload SBOM
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cyclonedx
+          path: security/sbom.json
+          retention-days: 30
+
+      # ----- 9. Upload vulnerability report as artifact -----
+      - name: Upload vulnerability report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vulnerability-report
+          path: security/reports/vuln-ci.json
+          retention-days: 30
