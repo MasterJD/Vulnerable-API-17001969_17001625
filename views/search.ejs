@@ -1,32 +1,35 @@
-<h2>Results for: <%- in_query %></h2>
+<h2 class="text-2xl font-bold mb-6">Results for: <%- in_query %></h2>
 
 <% if (products.length == 0) { %>
-<h3 style="color: red;">Products not found</h3>
-<% } else {%>
-<div class="table-responsive">
-    <table class="table">
+<div class="alert alert-error shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>Products not found</span>
+</div>
+<% } else { %>
+<div class="overflow-x-auto rounded-box shadow">
+    <table class="table table-zebra bg-base-100">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Product name</th>
-            <th>Product description</th>
-            <th>Price</th>
-            <th>Info</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Product name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-
-        <% for( var i=0; i < products.length; i++)  {%>
-        <tr>
-            <td><%- i + 1 %></td>
-            <td><%- products[i].name %></td>
-            <td><%- products[i].description %></td>
-            <td><%- products[i].price %></td>
-            <td><a href="/products/detail?id=<%- i + 1 %>"><i class="glyphicon glyphicon-list"></i></a></td>
-        </tr>
-        <%}%>
+            <% for(var i = 0; i < products.length; i++) { %>
+            <tr class="hover">
+                <td><%- i + 1 %></td>
+                <td class="font-medium"><%- products[i].name %></td>
+                <td class="max-w-xs truncate"><%- products[i].description %></td>
+                <td><div class="badge badge-primary"><%- products[i].price %>€</div></td>
+                <td><a href="/products/detail?id=<%- i + 1 %>" class="btn btn-ghost btn-xs">Details</a></td>
+            </tr>
+            <% } %>
         </tbody>
     </table>
 </div>
-
 <% } %>

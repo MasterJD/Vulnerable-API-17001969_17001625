@@ -12,6 +12,7 @@ WORKDIR /app
 
 # Install depends
 COPY package.json /app/
+COPY scripts/ /app/scripts/
 RUN npm install
 
 # Bundle code

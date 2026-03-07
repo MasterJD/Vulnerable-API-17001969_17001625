@@ -1,146 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night">
 
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>NodeVulnerable Shop</title>
 
-    <title>Bare - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="/css/style.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <style>
-        body {
-            padding-top: 70px;
-            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-        }
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
-<body>
+<body class="min-h-screen bg-base-200">
 
 <!-- Navigation -->
-<nav class="navbar navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div style="margin-left: 50px;">
-                <img class="pull-left" width="50px" src="/images/logo.png" alt="logo">
-                <a style="margin-left: 5px;" class="navbar-brand" href="/"> NodeVulnerable</a>
+<div class="navbar bg-base-100 shadow-lg fixed top-0 z-50">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
             </div>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <form class="form-inline" style="padding-top: 8px;" method="GET" action="/products/search">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="q" placeholder="Search in products...">
-                                <span class="input-group-addon" id="start-date"><span class="glyphicon glyphicon-search"></span></span>
-                            </div>
-                        </div>
-                    </form>
-                </li>
-                <li>
-                    <a href="/">Products</a>
-                </li>
-                <li>
-                    <a href="/products/purchased">My products</a>
-                </li>
-                <li>
-                    <a href="/logout">Logout</a>
-                </li>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="/">Products</a></li>
+                <li><a href="/products/purchased">My Products</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
+        <a href="/" class="btn btn-ghost text-xl gap-2">
+            <img width="36" src="/images/logo.png" alt="logo">
+            NodeVulnerable
+        </a>
     </div>
-    <!-- /.container -->
-</nav>
+    <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+            <li><a href="/" class="font-medium">Products</a></li>
+            <li><a href="/products/purchased" class="font-medium">My Products</a></li>
+        </ul>
+    </div>
+    <div class="navbar-end gap-2">
+        <form method="GET" action="/products/search">
+            <div class="join">
+                <input type="text" name="q" placeholder="Search products…" class="input input-bordered input-sm join-item w-36 md:w-56" />
+                <button class="btn btn-sm btn-primary join-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+        <a href="/logout" class="btn btn-ghost btn-sm hidden lg:flex">Logout</a>
+    </div>
+</div>
 
 <!-- Page Content -->
-<div class="container">
-
-    <!-- /.row -->
+<div class="container mx-auto px-4 pt-24 pb-8">
     <%- body %>
 </div>
-<!-- /.container -->
 
-<!-- jQuery Version 1.11.1 -->
+<!-- jQuery (kept for buy-form AJAX) -->
 <script src="/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/freewall.js"></script>
 <script>
-
-    var wall = new Freewall("#grid");
-    wall.reset({
-        selector: '.thumbnail',
-        animate: true,
-        cellW: 150,
-        cellH: 'auto',
-        onResize: function() {
-            wall.fitWidth();
-        }
-    });
-
-    wall.container.find('.thumbnail').find('img').load(function() {
-        wall.fitWidth();
-    }).each(function () {
-        wall.fitWidth();
-    });
-
     $(document).ready(function () {
         $("#buy_button").click(function () {
-            $("#buy-screen").modal();
-        })
+            document.getElementById("buy-dialog").showModal();
+        });
 
         $("#buy-form").submit(function (event) {
             event.preventDefault();
-
 
             $.ajax({
                 method: "post",
                 url: "/products/buy",
                 data: $("#buy-form").serialize()
             }).done(function(data) {
-                $("#buy-screen").modal("hide");
-                $('<div class="modal fade in" tabindex="-1" role="dialog" style="display: block;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title">' + data.message + '</h4></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Ok</button></div></div></div></div>').modal();
-
+                document.getElementById("buy-dialog").close();
+                document.getElementById("success-message").textContent = data.message;
+                document.getElementById("success-dialog").showModal();
                 window.location = "/products/purchased";
             }).fail(function (data) {
-                $("#buy-screen").html(data.message);
-                $("#buy-screen").show();
+                var el = document.getElementById("error");
+                el.textContent = data.message;
+                el.classList.remove("hidden");
             });
-        })
-    })
-
-
+        });
+    });
 </script>
-<a href="https://github.com/cr0hn/vulnerable-node"><img width="150px" style="position: absolute; bottom:0 ; right: 0; border: 0;" src="https://raw.githubusercontent.com/Omgitsu/Mockulus/master/Mockulus/Images-Public.xcassets/AboutWindow/fork-me-on-github-bottom-right.imageset/fork-me-on-github-bottom-right%402x.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
-</body>
 
+</body>
 </html>

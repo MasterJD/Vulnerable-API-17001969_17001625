@@ -1,35 +1,39 @@
 <% if (products.length == 0) { %>
-<h3 style="color: red;">You haven't purchased any product yet.</h3>
-<% } else {%>
+<div class="alert alert-warning shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+    <span>You haven't purchased any product yet.</span>
+</div>
+<% } else { %>
 
-<h2>Your purchased products:</h2>
+<h2 class="text-2xl font-bold mb-6">Your purchased products</h2>
 
-<div class="table-responsive">
-    <table class="table">
+<div class="overflow-x-auto rounded-box shadow">
+    <table class="table table-zebra bg-base-100">
         <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Contact mail</th>
-            <th>Contact phone</th>
-            <th>Shipping date</th>
-            <th>Shipping address</th>
-            <th>Price</th>
-        </tr>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Contact mail</th>
+                <th>Contact phone</th>
+                <th>Shipping date</th>
+                <th>Shipping address</th>
+                <th>Price</th>
+            </tr>
         </thead>
         <tbody>
-
-        <% for( var i=0; i < products.length; i++)  {%>
-        <tr>
-            <td><%- products[i].product_id %></td>
-            <td><%- products[i].product_name %></td>
-            <td><%- products[i].mail %></td>
-            <td><%- products[i].phone %></td>
-            <td><%- products[i].ship_date %></td>
-            <td><%- products[i].address %></td>
-            <td><%- products[i].price %>€</td>
-        </tr>
-        <%}%>
+            <% for(var i = 0; i < products.length; i++) { %>
+            <tr class="hover">
+                <td><%- products[i].product_id %></td>
+                <td class="font-medium"><%- products[i].product_name %></td>
+                <td><%- products[i].mail %></td>
+                <td><%- products[i].phone %></td>
+                <td><%- products[i].ship_date %></td>
+                <td><%- products[i].address %></td>
+                <td><div class="badge badge-primary"><%- products[i].price %>€</div></td>
+            </tr>
+            <% } %>
         </tbody>
     </table>
 </div>
