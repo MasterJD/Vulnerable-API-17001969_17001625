@@ -15,7 +15,7 @@ SECRET_PATTERNS="API_KEY=|SECRET=|TOKEN=|PASSWORD=|PRIVATE_KEY=|AWS_ACCESS_KEY|A
 EXCLUDED_PATHS="\.husky/|\.md$|__tests__/|security/|\.yml$|\.yaml$"
 
 # Get list of staged files, excluding safe paths
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -vE "$EXCLUDED_PATHS")
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -vE "$EXCLUDED_PATHS" || true)
 
 if [ -z "$STAGED_FILES" ]; then
   echo "No scannable files staged. Proceeding with commit."

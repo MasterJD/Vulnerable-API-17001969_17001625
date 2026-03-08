@@ -41,7 +41,7 @@ describe('Route Integration Tests', () => {
     test('should return the login page (200)', async () => {
       const res = await request(app).get('/login');
       expect(res.status).toBe(200);
-      expect(res.text).toContain('sign in');
+      expect(res.text).toContain('Sign In');
     });
 
     test('should pass returnurl and error to the template', async () => {
