@@ -12,6 +12,8 @@
     "ci": "npm run lint && npm test && npm run report",
     "prepare": "husky",
     "postinstall": "node scripts/postinstall-security.js",
+    "devex:up": "node scripts/devex-up.js",
+    "devex:down": "docker compose down",
     "security:sbom": "trivy fs --format cyclonedx -o security/sbom.json .",
     "security:scan": "trivy fs --scanners vuln --format table .",
     "security:scan:json": "trivy fs --scanners vuln --format json -o security/reports/vuln-latest.json .",
