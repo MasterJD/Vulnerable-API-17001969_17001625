@@ -8,12 +8,19 @@ var db_products = require("../model/products");
 var router = express.Router();
 
 var uploadsDir = path.join(__dirname, "..", "public", "images");
-if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
+var localUploadsEnabled = true;
+
+try {
+    if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+} catch (err) {
+    localUploadsEnabled = false;
 }
 
-var upload = multer({
-    storage: multer.diskStorage({
+var uploadStorage = null;
+if (localUploadsEnabled) {
+    uploadStorage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, uploadsDir);
         },
@@ -36,7 +43,13 @@ var upload = multer({
             var uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1000000000);
             cb(null, safeBaseName + "-" + uniqueSuffix + extension);
         }
-    }),
+    });
+} else {
+    uploadStorage = multer.memoryStorage();
+}
+
+var upload = multer({
+    storage: uploadStorage,
     fileFilter: function (req, file, cb) {
         var allowedMimeTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 
@@ -79,9 +92,76 @@ function default_admin_values() {
 }
 
 function remove_uploaded_file(file) {
-    if (file && file.path) {
+    if (localUploadsEnabled && file && file.path) {
         fs.unlink(file.path, function () {});
     }
+}
+
+function extract_admin_values(req) {
+    return {
+        name: (req.body.name || '').trim(),
+        description: (req.body.description || '').trim(),
+        price: (req.body.price || '').trim(),
+        image: (req.body.image || '').trim()
+    };
+}
+
+function validate_admin_product_input(values, parsedPrice, file) {
+    if (file && !localUploadsEnabled) {
+        return 'This deployment cannot persist local file uploads. Use an external image URL or existing filename.';
+    }
+
+    if (values.name === '' || values.description === '') {
+        return 'Name and description are required.';
+    }
+
+    if (values.image === '') {
+        return 'Upload an image file or provide an existing image filename/URL.';
+    }
+
+    if (isNaN(parsedPrice) || parsedPrice < 0) {
+        return 'Price must be a positive number.';
+    }
+
+    return '';
+}
+
+function render_admin_error(req, res, values, message, statusCode, file) {
+    remove_uploaded_file(file);
+    return render_admin_products(req, res, {
+        values: values,
+        message: message,
+        messageType: 'error',
+        statusCode: statusCode
+    });
+}
+
+function create_admin_product(req, res, values, parsedPrice, file) {
+    return db_products.createProduct({
+        name: values.name,
+        description: values.description,
+        price: parsedPrice,
+        image: values.image
+    })
+        .then(function () {
+            return render_admin_products(req, res, {
+                values: default_admin_values(),
+                message: 'Product created successfully.',
+                messageType: 'success'
+            });
+        })
+        .catch(function (err) {
+            console.log(err);
+
+            return render_admin_error(
+                req,
+                res,
+                values,
+                'Could not create the product. Please try again.',
+                500,
+                file
+            );
+        });
 }
 
 function render_admin_products(req, res, options) {
@@ -213,20 +293,10 @@ router.post('/admin/products', function(req, res, next) {
     }
 
     upload.single('image_file')(req, res, function (uploadErr) {
-        var values = {
-            name: (req.body.name || '').trim(),
-            description: (req.body.description || '').trim(),
-            price: (req.body.price || '').trim(),
-            image: (req.body.image || '').trim()
-        };
+        var values = extract_admin_values(req);
 
         if (uploadErr) {
-            return render_admin_products(req, res, {
-                values: values,
-                message: uploadErr.message,
-                messageType: 'error',
-                statusCode: 400
-            });
+            return render_admin_error(req, res, values, uploadErr.message, 400, req.file);
         }
 
         if (req.file && req.file.filename) {
@@ -234,62 +304,12 @@ router.post('/admin/products', function(req, res, next) {
         }
 
         var parsedPrice = parseInt(values.price, 10);
-
-        if (values.name === '' || values.description === '') {
-            remove_uploaded_file(req.file);
-            return render_admin_products(req, res, {
-                values: values,
-                message: 'Name and description are required.',
-                messageType: 'error',
-                statusCode: 400
-            });
+        var validationError = validate_admin_product_input(values, parsedPrice, req.file);
+        if (validationError !== '') {
+            return render_admin_error(req, res, values, validationError, 400, req.file);
         }
 
-        if (values.image === '') {
-            remove_uploaded_file(req.file);
-            return render_admin_products(req, res, {
-                values: values,
-                message: 'Upload an image file or provide an existing image filename.',
-                messageType: 'error',
-                statusCode: 400
-            });
-        }
-
-        if (isNaN(parsedPrice) || parsedPrice < 0) {
-            remove_uploaded_file(req.file);
-            return render_admin_products(req, res, {
-                values: values,
-                message: 'Price must be a positive number.',
-                messageType: 'error',
-                statusCode: 400
-            });
-        }
-
-        db_products.createProduct({
-            name: values.name,
-            description: values.description,
-            price: parsedPrice,
-            image: values.image
-        })
-            .then(function () {
-                return render_admin_products(req, res, {
-                    values: default_admin_values(),
-                    message: 'Product created successfully.',
-                    messageType: 'success'
-                });
-            })
-            .catch(function (err) {
-                console.log(err);
-
-                remove_uploaded_file(req.file);
-
-                return render_admin_products(req, res, {
-                    values: values,
-                    message: 'Could not create the product. Please try again.',
-                    messageType: 'error',
-                    statusCode: 500
-                });
-            });
+        return create_admin_product(req, res, values, parsedPrice, req.file);
     });
 });
 

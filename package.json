@@ -34,6 +34,11 @@
     "pg-promise": "^11.5.4",
     "serve-favicon": "^2.5.0"
   },
+  "overrides": {
+    "flatted": "3.4.2",
+    "path-to-regexp": "0.1.13",
+    "brace-expansion": "2.0.3"
+  },
   "devDependencies": {
     "eslint": "^8.57.1",
     "husky": "^9.1.7",

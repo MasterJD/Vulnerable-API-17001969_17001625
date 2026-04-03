@@ -1,7 +1,11 @@
+<%
+var productImageSrc = (/^https?:\/\//i.test(product.image || '')) ? product.image : '/images/' + product.image;
+%>
+
 <div class="max-w-4xl mx-auto">
     <div class="card lg:card-side bg-base-100 shadow-xl">
         <figure class="lg:w-1/2">
-            <img src="/images/<%- product.image %>" alt="<%- product.name %>" class="w-full h-80 lg:h-full object-cover" />
+            <img src="<%- productImageSrc %>" alt="<%- product.name %>" class="w-full h-80 lg:h-full object-cover" />
         </figure>
         <div class="card-body lg:w-1/2">
             <h2 class="card-title text-3xl"><%- product.name %></h2>

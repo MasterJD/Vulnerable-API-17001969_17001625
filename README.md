@@ -74,6 +74,36 @@ npm run security:scan
 npm run finops:benchmark
 ```
 
+## Deploy on Vercel
+
+This project can run on Vercel using the included `vercel.json` and `api/index.js`.
+
+### 1) Provision PostgreSQL
+
+Use any managed PostgreSQL provider (Vercel Postgres, Neon, Supabase, Render, Railway, etc.).
+
+### 2) Set Environment Variables in Vercel
+
+At minimum, set one of the following in Project Settings -> Environment Variables:
+
+- `DATABASE_URL` (recommended)
+- or `POSTGRES_URL` / `POSTGRES_PRISMA_URL` / `POSTGRES_URL_NON_POOLING`
+
+Notes:
+
+- `config.js` now prefers those variables automatically.
+- `ENABLE_DB_BOOTSTRAP` is optional. Keep it unset/false on Vercel to avoid startup seeding on serverless cold starts.
+
+### 3) Deploy
+
+Connect repository in Vercel and deploy normally.
+
+### 4) Images in Vercel
+
+- Local disk uploads are not persistent in serverless environments.
+- For production, store images in external object storage (for example Vercel Blob, S3, Cloudinary) and save the public image URL in product `image` field.
+- The UI supports both local filenames (for local/docker) and full `http/https` image URLs.
+
 ## Security Notes
 
 The project contains intentionally vulnerable flows for educational analysis.

@@ -12,10 +12,11 @@
         var product = products[i];
         var searchableProductText = (product.name + ' ' + product.description).toLowerCase();
         var productPrice = product.price + '€';
+        var productImageSrc = (/^https?:\/\//i.test(product.image || '')) ? product.image : '/images/' + product.image;
     %>
     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-200" data-product-card="true" data-product-search="<%- searchableProductText %>">
         <figure class="px-4 pt-4">
-            <img src="/images/<%-product.image%>" alt="<%-product.name%>" class="rounded-xl h-48 w-full object-cover" />
+            <img src="<%- productImageSrc %>" alt="<%-product.name%>" class="rounded-xl h-48 w-full object-cover" />
         </figure>
         <div class="card-body">
             <h2 class="card-title text-base">

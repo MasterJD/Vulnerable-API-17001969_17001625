@@ -14,21 +14,41 @@ var login = require('./routes/login');
 var products = require('./routes/products');
 
 var app = express();
+var runningOnVercel = process.env.VERCEL === '1';
 
 // config second logger
-log4js.configure({
-  appenders: {
-    file: { type: 'file', filename: 'app-custom.log' }
-  },
-  categories: {
-    default: { appenders: ['file'], level: 'info' },
-    vnode: { appenders: ['file'], level: 'info' }
-  }
-});
+if (runningOnVercel) {
+  log4js.configure({
+    appenders: {
+      out: { type: 'stdout' }
+    },
+    categories: {
+      default: { appenders: ['out'], level: 'info' },
+      vnode: { appenders: ['out'], level: 'info' }
+    }
+  });
+} else {
+  log4js.configure({
+    appenders: {
+      file: { type: 'file', filename: 'app-custom.log' }
+    },
+    categories: {
+      default: { appenders: ['file'], level: 'info' },
+      vnode: { appenders: ['file'], level: 'info' }
+    }
+  });
+}
 
 var logger4js = log4js.getLogger('vnode');
 
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'))
+var accessLogStream = null;
+if (!runningOnVercel) {
+  try {
+    accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+  } catch (err) {
+    logger4js.warn('Falling back to stdout logger: ' + err.message);
+  }
+}
 
 /*
  * Template engine
@@ -39,7 +59,11 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 
 // uncomment after placing your favicon in /public
-app.use(logger('combined', {stream: accessLogStream}));
+if (accessLogStream) {
+  app.use(logger('combined', {stream: accessLogStream}));
+} else {
+  app.use(logger('combined'));
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -102,6 +126,11 @@ app.use(function(err, req, res, next) {
 logger4js.info("Building database")
 // logger.info(("Building database");
 
-init_db();
+var shouldBootstrapDatabase = !runningOnVercel || process.env.ENABLE_DB_BOOTSTRAP === 'true';
+if (shouldBootstrapDatabase) {
+  init_db();
+} else {
+  logger4js.info('Skipping init_db bootstrap on Vercel runtime.');
+}
 
 module.exports = app;

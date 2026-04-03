@@ -40,12 +40,12 @@
                 </div>
 
                 <div class="form-control w-full">
-                    <label class="label" for="image"><span class="label-text">Or existing image filename</span></label>
-                    <input type="text" id="image" name="image" class="input input-bordered w-full" value="<%- values.image %>" placeholder="product_1.jpg">
+                    <label class="label" for="image"><span class="label-text">Or existing image filename/URL</span></label>
+                    <input type="text" id="image" name="image" class="input input-bordered w-full" value="<%- values.image %>" placeholder="product_1.jpg or https://...">
                 </div>
 
                 <div class="text-sm opacity-70">
-                    You can upload your own image, or use an existing one: product_1.jpg, product_2.jpg, product_3.jpg, product_4.jpg, product_5.jpg, product_6.jpg, product_7.jpg, product_8.jpg.
+                    You can upload your own image, or use an existing filename/URL: product_1.jpg, product_2.jpg, product_3.jpg, product_4.jpg, product_5.jpg, product_6.jpg, product_7.jpg, product_8.jpg.
                 </div>
 
                 <div class="card-actions justify-end pt-2">
@@ -78,10 +78,11 @@
                         </thead>
                         <tbody>
                             <% for (var i = 0; i < products.length; i++) { %>
+                                <% var adminProductImageSrc = (/^https?:\/\//i.test(products[i].image || '')) ? products[i].image : '/images/' + products[i].image; %>
                                 <tr>
                                     <td><%- products[i].id %></td>
                                     <td>
-                                        <img src="/images/<%- products[i].image %>" alt="<%- products[i].name %>" class="w-16 h-16 rounded object-cover" />
+                                        <img src="<%- adminProductImageSrc %>" alt="<%- products[i].name %>" class="w-16 h-16 rounded object-cover" />
                                     </td>
                                     <td><%- products[i].name %></td>
                                     <td><%- products[i].price %>€</td>
