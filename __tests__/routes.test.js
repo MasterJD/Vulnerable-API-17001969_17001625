@@ -185,6 +185,68 @@ describe('Route Integration Tests', () => {
     });
   });
 
+  describe('Admin product management', () => {
+    test('should render admin add-product page for admin user', async () => {
+      mockDb.one.mockResolvedValueOnce({ name: 'admin', password: 'admin' });
+      await agent.post('/login/auth').send({ username: 'admin', password: 'admin', returnurl: '/' });
+
+      mockDb.many.mockResolvedValueOnce([
+        { id: 1, name: 'Widget', description: 'A widget', price: 10, image: 'product_1.jpg' },
+      ]);
+
+      const res = await agent.get('/admin/products');
+      expect(res.status).toBe(200);
+      expect(res.text).toContain('Admin - Add Product');
+      expect(res.text).toContain('Current products');
+      expect(res.text).toContain('Delete');
+    });
+
+    test('should create product from admin page', async () => {
+      mockDb.one.mockResolvedValueOnce({ name: 'admin', password: 'admin' });
+      await agent.post('/login/auth').send({ username: 'admin', password: 'admin', returnurl: '/' });
+
+      mockDb.one.mockResolvedValueOnce({ id: 42 });
+
+      const res = await agent
+        .post('/admin/products')
+        .send({
+          name: 'New Product',
+          description: 'Created from admin page',
+          price: '35',
+          image: 'product_1.jpg',
+        });
+
+      expect(res.status).toBe(200);
+      expect(res.text).toContain('Product created successfully');
+    });
+
+    test('should delete product from admin page', async () => {
+      mockDb.one.mockResolvedValueOnce({ name: 'admin', password: 'admin' });
+      await agent.post('/login/auth').send({ username: 'admin', password: 'admin', returnurl: '/' });
+
+      const res = await agent
+        .post('/admin/products/delete')
+        .send({ product_id: '1' });
+
+      expect(res.status).toBe(200);
+      expect(res.text).toContain('Product deleted successfully');
+    });
+
+    test('should deny admin page to non-admin users', async () => {
+      const nonAdminAgent = request.agent(app);
+
+      mockDb.one.mockResolvedValueOnce({ name: 'roberto', password: 'asdfpiuw981' });
+      await nonAdminAgent
+        .post('/login/auth')
+        .send({ username: 'roberto', password: 'asdfpiuw981', returnurl: '/' })
+        .expect(302);
+
+      const res = await nonAdminAgent.get('/admin/products');
+      expect(res.status).toBe(403);
+      expect(res.text).toContain('Admin access only');
+    });
+  });
+
   describe('POST /products/buy', () => {
     test('should return error when price is missing', async () => {
       const res = await agent

@@ -47,12 +47,24 @@ function get_purcharsed(username) {
     return db.many(q, [username]);
 }
 
+function create_product(product) {
+    var q = "INSERT INTO products(id, name, description, price, image) VALUES((SELECT COALESCE(MAX(id), 0) + 1 FROM products), $1, $2, $3, $4) RETURNING id;";
+    return db.one(q, [product.name, product.description, product.price, product.image]);
+}
+
+function delete_product(product_id) {
+    var q = "DELETE FROM products WHERE id = $1;";
+    return db.none(q, [product_id]);
+}
+
 var actions = {
     "list": list_products,
     "getProduct": getProduct,
     "search": search,
     "purchase": purchase,
-    "getPurchased": get_purcharsed
+    "getPurchased": get_purcharsed,
+    "createProduct": create_product,
+    "deleteProduct": delete_product
 }
 
 module.exports = actions;

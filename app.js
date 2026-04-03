@@ -52,6 +52,11 @@ app.use(session({
   }
 }));
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session && req.session.user_name ? req.session.user_name : null;
+  next();
+});
+
 /*
  * Routes config
  */
