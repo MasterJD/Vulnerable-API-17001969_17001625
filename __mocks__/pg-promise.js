@@ -14,6 +14,7 @@
 
 const mockDb = {
   one: jest.fn().mockResolvedValue({}),
+  none: jest.fn().mockResolvedValue(undefined),
   many: jest.fn().mockResolvedValue([]),
 };
 

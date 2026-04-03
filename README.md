@@ -1,106 +1,96 @@
-Vulnerable Node
-===============
+# Vulnerable Node - University Refactoring Program
+
+![License](https://img.shields.io/badge/license-BSD-blue.svg)
+![Node](https://img.shields.io/badge/node-19.x-339933?logo=node.js&logoColor=white)
+![Architecture](https://img.shields.io/badge/architecture-modular%20monolith-1f6feb)
+![DevSecOps](https://img.shields.io/badge/DevSecOps-Trivy%20%2B%20Husky-0ea5e9)
 
 ![Logo](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/logo-small.png)
 
-*Vulnerable Node: A very vulnerable web site written in NodeJS*
+This repository is an academic modernization of the original vulnerable-node project.
+It keeps intentionally vulnerable behavior for security education, while introducing
+governance, DevSecOps, platform engineering, and architecture strategy deliverables.
 
-Codename | PsEA
--------- | ----
-Version | 1.0
-Code | https://github.com/cr0hn/vulnerable-node
-Issues | https://github.com/cr0hn/vulnerable-node/issues/
-Author | Daniel Garcia (cr0hn) - @ggdaniel
+## Project Scope
 
-# Support this project
+- Base application: intentionally vulnerable Node.js + PostgreSQL shop.
+- Refactoring goal: improve quality and delivery practices without changing educational intent.
+- Target architecture: modular monolith by bounded components.
 
-Support this project (to solve issues, new features...) by applying the Github "Sponsor" button.
+## Deliveries Index
 
-# What's this project?
+- Delivery 1: discovery and reverse engineering
+	- [Delivery_1_Discovery_&_Reverse_Engineering/README.md](Delivery_1_Discovery_%26_Reverse_Engineering/README.md)
+	- [Delivery_1_Discovery_&_Reverse_Engineering/CONTEXT_MAP.md](Delivery_1_Discovery_%26_Reverse_Engineering/CONTEXT_MAP.md)
+- Delivery 2: governance and technical debt audit
+	- [Delivery_2_Governance_&_Technical_Debt_Audit/GOVERNANCE_AND_TECH_DEBT_AUDIT.md](Delivery_2_Governance_%26_Technical_Debt_Audit/GOVERNANCE_AND_TECH_DEBT_AUDIT.md)
+	- [Delivery_2_Governance_&_Technical_Debt_Audit/CI_GOVERNANCE_LOG.md](Delivery_2_Governance_%26_Technical_Debt_Audit/CI_GOVERNANCE_LOG.md)
+- Delivery 3: security hardening (DevSecOps)
+	- [Delivery_3_Security_Hardening_(DevSecOps)/Security_Hardening_Report.md](Delivery_3_Security_Hardening_(DevSecOps)/Security_Hardening_Report.md)
+- Delivery 4: architecture strategy and DevEx
+	- [Delivery_4_Architecture_Strategy_&_DevEx/Architecture_Strategy_DevEx_Report.md](Delivery_4_Architecture_Strategy_%26_DevEx/Architecture_Strategy_DevEx_Report.md)
 
-The goal of this project is to be a project with really vulnerable code in NodeJS, not simulated.
+## Quick Start (One Command)
 
-## Why?
+Prerequisites:
 
-Similar project, like OWASP Node Goat, are pretty and useful for learning process but not for a real researcher or studding vulnerabilities in source code, because their code is not really vulnerable but simulated.
+- Docker Desktop (or Docker Engine + Compose plugin)
+- Node.js 19+
+- npm
 
-This project was created with the **purpose of have a project with identified vulnerabilities in source code with the finality of can measure the quality of security analyzers tools**.
-
-Although not its main objective, this project also can be useful for:
-
-- Pentesting training.
-- Teaching: learn how NOT programming in NodeJS.
-
-The purpose of project is to provide a real app to test the quality of security source code analyzers in white box processing.
-
-## How?
-
-This project simulates a real (and very little) shop site that has identifiable sources points of common vulnerabilities.
-
-## Installation
-
-The most simple way to run the project is using docker-compose, doing this:
+Start full environment (app + postgres):
 
 ```bash
-
-# git clone https://github.com/cr0hn/vulnerable-node.git vulnerable-node
-# cd vulnerable-node/
-# docker-compose build && docker-compose up
-Building postgres_db
-Step 1 : FROM library/postgres
----> 247a11721cbd
-Step 2 : MAINTAINER "Daniel Garcia aka (cr0hn)" <cr0hn@cr0hn.com>
----> Using cache
----> d67c05e9e2d5
-Step 3 : ADD init.sql /docker-entrypoint-initdb.d/
-....
+npm run devex:up
 ```
 
-## Running
+Stop environment:
 
-Once docker compose was finished, we can open a browser and type the URL: `127.0.0.1:3000` (or the IP where you deployed the project):
+```bash
+npm run devex:down
+```
+
+Access application:
+
+- URL: http://127.0.0.1:3000/login
+- Demo credentials:
+	- admin / admin
+	- roberto / asdfpiuw981
+
+## Developer Commands
+
+```bash
+# Quality and tests
+npm run lint
+npm test
+npm run ci
+
+# Security
+npm run security:update
+npm run security:sbom
+npm run security:scan
+
+# FinOps benchmark
+npm run finops:benchmark
+```
+
+## Security Notes
+
+The project contains intentionally vulnerable flows for educational analysis.
+Do not expose this application to production or public internet environments.
+
+## Legacy Screenshots
 
 ![Login screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/login.jpg)
+![Home screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/home.jpg)
+![Shopping screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/shop.jpg)
+![Purchased products](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/purchased.jpg)
 
-To access to website you can use displayed in landing page:
-
-- admin : admin
-- roberto : asdfpiuw981
-
-Here some images of site:
-
-![home screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/home.jpg)
-
-![shopping](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/shop.jpg)
-
-![purchased products](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/purchased.jpg)
-
-# Vulnerabilities
-
-## Vulnerability list:
-
-This project has the most common vulnerabilities of `OWASP Top 10 <https://www.owasp.org/index.php/Top_10_2013-Top_10>`:
-
-- A1  - Injection
-- A2  - Broken Authentication and Session Management
-- A3  - Cross-Site Scripting (XSS)
-- A4  - Insecure Direct Object References
-- A5  - Security Misconfiguration
-- A6  - Sensitive Data Exposure
-- A8  - Cross-Site Request Forgery (CSRF)
-- A10 - Unvalidated Redirects and Forwards
-
-## Vulnerability code location
-
-The exactly code location of each vulnerability is pending to write
-
-# References
-
-I took ideas and how to explode it in NodeJS using these references:
+## References
 
 - https://blog.risingstack.com/node-js-security-checklist/
 - https://github.com/substack/safe-regex
 
-# License
+## License
 
-This project is released under license BSD.
+BSD.

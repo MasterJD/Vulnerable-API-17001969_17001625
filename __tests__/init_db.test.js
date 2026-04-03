@@ -19,6 +19,7 @@ describe('init_db', () => {
     const pgPromise = require('pg-promise');
     const mockDb = pgPromise._mockDb;
     mockDb.one.mockResolvedValue({});
+    mockDb.none.mockResolvedValue(undefined);
 
     const init_db = require('../model/init_db');
     init_db();
@@ -27,45 +28,43 @@ describe('init_db', () => {
     await new Promise(resolve => setTimeout(resolve, 50));
 
     // Should have been called for at least 3 CREATE TABLE statements
-    const createCalls = mockDb.one.mock.calls.filter(
-      call => typeof call[0] === 'string' && call[0].includes('CREATE TABLE')
+    const createCalls = mockDb.none.mock.calls.filter(
+      call => typeof call[0] === 'string' && call[0].includes('CREATE TABLE IF NOT EXISTS')
     );
     expect(createCalls.length).toBe(3);
   });
 
-  test('should insert seed data when tables already exist (CREATE rejects)', async () => {
+  test('should insert seed data using bulk idempotent queries', async () => {
     const pgPromise = require('pg-promise');
     const mockDb = pgPromise._mockDb;
 
-    // CREATE TABLE fails (table exists) → catch block inserts seed data
-    // INSERT succeeds (resolves)
-    mockDb.one.mockImplementation((query) => {
-      if (typeof query === 'string' && query.includes('CREATE TABLE')) {
-        return Promise.reject(new Error('relation already exists'));
-      }
-      return Promise.resolve({});
-    });
+    mockDb.none.mockResolvedValue(undefined);
 
     const init_db = require('../model/init_db');
     init_db();
 
-    // Allow promises to settle (catches fire, then inserts run)
+    // Allow promise chain to settle
     await new Promise(resolve => setTimeout(resolve, 100));
 
-    // Check that INSERT queries were attempted for users and products
-    const insertCalls = mockDb.one.mock.calls.filter(
-      call => typeof call[0] === 'string' && call[0].includes('INSERT')
+    const userInsertCall = mockDb.none.mock.calls.find(
+      call => typeof call[0] === 'string' && call[0].includes('INSERT INTO users')
     );
-    // 2 users + 8 products = 10 insert calls
-    expect(insertCalls.length).toBe(10);
+    const productInsertCall = mockDb.none.mock.calls.find(
+      call => typeof call[0] === 'string' && call[0].includes('INSERT INTO products')
+    );
+
+    expect(userInsertCall).toBeDefined();
+    expect(productInsertCall).toBeDefined();
+    expect(userInsertCall[0]).toContain('ON CONFLICT (name) DO NOTHING');
+    expect(productInsertCall[0]).toContain('ON CONFLICT (id) DO NOTHING');
   });
 
-  test('should handle INSERT failures gracefully (empty catch blocks)', async () => {
+  test('should handle DB initialization failures gracefully', async () => {
     const pgPromise = require('pg-promise');
     const mockDb = pgPromise._mockDb;
 
-    // Both CREATE and INSERT fail
-    mockDb.one.mockRejectedValue(new Error('some db error'));
+    // Fail any init query in the promise chain
+    mockDb.none.mockRejectedValue(new Error('some db error'));
 
     const init_db = require('../model/init_db');
 
