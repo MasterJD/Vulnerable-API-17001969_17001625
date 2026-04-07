@@ -1,0 +1,843 @@
+PRESENTACION FINAL - VULNERABLE NODE
+GUIA COMPLETA PARA 10 MINUTOS (DELIVERY 1 AL 5)
+
+Proyecto: Vulnerable Node - University Refactoring Program
+Equipo: 17001969 / 17001625
+Duracion total: 10:00 min
+Objetivo: mostrar evolucion tecnica completa desde diagnostico hasta optimizacion de costo/rendimiento.
+
+==================================================
+1) NARRATIVA GENERAL (STORYLINE)
+==================================================
+
+Mensaje central:
+"Tomamos un sistema legado intencionalmente vulnerable y lo transformamos en una plataforma academica gobernada por metricas, controles de seguridad, estrategia arquitectonica y eficiencia operativa".
+
+Estructura de la historia:
+1. Entender el problema (Delivery 1)
+2. Controlar calidad y deuda (Delivery 2)
+3. Cerrar riesgos de seguridad (Delivery 3)
+4. Definir direccion tecnica y mejorar DevEx (Delivery 4)
+5. Optimizar costo y performance con evidencia (Delivery 5)
+
+3 numeros para recordar en la defensa:
+- 98.38% cobertura de statements
+- 3 vulnerabilidades HIGH -> 0
+- 61.54% mejora en camino de inicializacion DB
+
+
+==================================================
+2) GUION SLIDE BY SLIDE (10 MIN)
+==================================================
+
+SLIDE 1 - PORTADA Y CONTEXTO
+Tiempo: 0:00 - 0:45
+Titulo sugerido:
+"Vulnerable Node: Modernizacion guiada por evidencia"
+
+En pantalla (bullets):
+- Base: app educativa vulnerable (Node.js + PostgreSQL)
+- Objetivo: mejorar practicas sin cambiar el fin academico
+- Alcance: 5 entregas tecnicas integradas
+
+Guion oral sugerido:
+"Este proyecto parte de una aplicacion educativa intencionalmente vulnerable. En lugar de reescribir todo, aplicamos una modernizacion por etapas. En 5 deliveries pasamos de diagnostico a una operacion mas gobernada: medimos calidad, endurecimos seguridad, definimos arquitectura futura y optimizamos costo de inicializacion."
+
+
+SLIDE 2 - PROBLEMA INICIAL (AS-IS)
+Tiempo: 0:45 - 1:35
+Titulo sugerido:
+"Estado inicial: deuda tecnica, riesgo y friccion"
+
+En pantalla (bullets):
+- Acoplamiento alto y limites de dominio difusos
+- Riesgos: SQLi, secretos hardcoded, config fragil
+- Onboarding con friccion (arranque no confiable)
+
+Guion oral sugerido:
+"El estado inicial combinaba varios problemas: rutas y modelos acoplados, vulnerabilidades conocidas, configuracion sensible al entorno y una experiencia de arranque poco predecible. Antes de cambiar codigo, priorizamos entender exactamente donde estaban los riesgos y que impacto tenian en mantenibilidad y seguridad."
+
+
+SLIDE 3 - DELIVERY 1 (DISCOVERY)
+Tiempo: 1:35 - 2:30
+Titulo sugerido:
+"Delivery 1: Discovery y Reverse Engineering"
+
+En pantalla (bullets):
+- Se mapearon 3 bounded contexts: IAM, Catalogo, Ventas
+- Se documento flujo funcional real con user stories
+- Se registro friccion de onboarding y riesgos criticos
+
+Guion oral sugerido:
+"En Delivery 1 levantamos evidencia de arquitectura y funcionalidad. Definimos context map con IAM, Catalogo y Ventas, y recuperamos backlog funcional desde el codigo real. Tambien registramos bloqueos de onboarding y vulnerabilidades para no refactorizar a ciegas. Esto nos dio una base concreta para priorizar." 
+
+Evidencia:
+- Delivery_1_Discovery_&_Reverse_Engineering/CONTEXT_MAP.md
+- Delivery_1_Discovery_&_Reverse_Engineering/ONBOARDING_LOG.md
+- Delivery_1_Discovery_&_Reverse_Engineering/USER_STORIES.md
+
+
+SLIDE 4 - DELIVERY 2 (GOVERNANCE)
+Tiempo: 2:30 - 3:35
+Titulo sugerido:
+"Delivery 2: Governance y deuda tecnica"
+
+En pantalla (bullets):
+- Pipeline CI con gates obligatorios
+- Complejidad maxima permitida: 10 (actual max: 7)
+- Cobertura minima: 80% (actual statements: 98.38%)
+
+Guion oral sugerido:
+"Delivery 2 fue sobre disciplina de entrega. Se formalizaron quality gates en CI para evitar regresiones: complejidad y cobertura. Los resultados actuales pasan con margen: complejidad maxima 7 y cobertura de statements 98.38%. Ademas, se identificaron hotspots de deuda para guiar la refactorizacion incremental." 
+
+Evidencia:
+- .github/workflows/governance.yml
+- Delivery_2_Governance_&_Technical_Debt_Audit/CI_GOVERNANCE_LOG.md
+- Delivery_2_Governance_&_Technical_Debt_Audit/CYCLOMATIC_COMPLEXITY_REPORT.md
+
+
+SLIDE 5 - HOTSPOTS Y PLAN TECNICO
+Tiempo: 3:35 - 4:20
+Titulo sugerido:
+"Top hotspots y plan de mitigacion"
+
+En pantalla (bullets):
+- routes/products.js (acoplamiento + riesgo funcional)
+- model/init_db.js (inicializacion fragil)
+- login/auth (riesgo de seguridad)
+
+Guion oral sugerido:
+"Con datos de complejidad y analisis de codigo se priorizaron tres hotspots. El plan fue aplicar Strangler Fig dentro del monolito: migracion incremental por slices, sin Big Bang rewrite. Esta estrategia reduce riesgo de regresion y mantiene continuidad de entrega." 
+
+Evidencia:
+- Delivery_2_Governance_&_Technical_Debt_Audit/GOVERNANCE_AND_TECH_DEBT_AUDIT.md
+
+
+SLIDE 6 - DELIVERY 3 (SECURITY HARDENING)
+Tiempo: 4:20 - 5:30
+Titulo sugerido:
+"Delivery 3: DevSecOps aplicado"
+
+En pantalla (bullets):
+- SBOM en formato CycloneDX
+- Trivy en CI con gate HIGH/CRITICAL
+- SQLi mitigado con consultas parametrizadas
+- Pre-commit hook para evitar leak de secretos
+
+Guion oral sugerido:
+"En seguridad pasamos de un enfoque reactivo a controles continuos. Se genero SBOM para transparencia de dependencias, se integro Trivy con gate de severidad alta/critica y se parchearon puntos de SQL injection con queries parametrizadas en modulos clave. Tambien se agrego pre-commit para bloquear secretos antes de versionar." 
+
+Evidencia:
+- Delivery_3_Security_Hardening_(DevSecOps)/Security_Hardening_Report.md
+- .github/workflows/security-scan.yml
+- security/sbom.json
+
+
+SLIDE 7 - RESULTADO DE SEGURIDAD
+Tiempo: 5:30 - 6:05
+Titulo sugerido:
+"Resultado cuantitativo de seguridad"
+
+En pantalla (bullets):
+- Antes: 3 vulnerabilidades HIGH (dependencias)
+- Despues: 0 vulnerabilidades reportadas
+- Tests: 55/55 en verde
+
+Guion oral sugerido:
+"La mejora de seguridad no quedo en teoria. En el reporte comparativo se observa reduccion de 3 vulnerabilidades HIGH a 0, manteniendo compatibilidad funcional con 55 de 55 pruebas aprobadas. Este punto es clave: mejorar seguridad sin romper comportamiento esperado." 
+
+Evidencia:
+- security/reports/vuln-before.json
+- security/reports/vuln-after.json
+- __tests__/
+
+
+SLIDE 8 - DELIVERY 4 (ARQUITECTURA + DEVEX)
+Tiempo: 6:05 - 7:05
+Titulo sugerido:
+"Delivery 4: Decision arquitectonica y One-Command Setup"
+
+En pantalla (bullets):
+- Onboarding con un comando: npm run devex:up
+- ADR-004: modular monolith por componentes
+- Migracion incremental, sin microservicios en esta fase
+
+Guion oral sugerido:
+"Delivery 4 consolida dos frentes: experiencia de desarrollo y direccion tecnica. Por un lado, se automatizo el arranque local en un comando. Por otro, se formalizo ADR-004 para evolucionar a monolito modular por componentes IAM, Catalogo y Ventas, con migracion gradual y contratos internos claros." 
+
+Evidencia:
+- scripts/devex-up.js
+- Delivery_4_Architecture_Strategy_&_DevEx/Architecture_Strategy_DevEx_Report.md
+
+
+SLIDE 9 - DELIVERY 5 (FINOPS)
+Tiempo: 7:05 - 8:05
+Titulo sugerido:
+"Delivery 5: FinOps y performance de inicializacion"
+
+En pantalla (bullets):
+- Refactor en init_db para esquema idempotente
+- Llamadas DB: 13 -> 5
+- Mejora: 61.54% en camino de inicializacion
+
+Guion oral sugerido:
+"En Delivery 5 se optimizo init_db para reducir round-trips y costo de arranque. Se paso de 13 a 5 llamadas a BD gracias a creacion idempotente y seed en bulk insert. La mejora teorica y de benchmark fue 61.54%, manteniendo el comportamiento funcional con pruebas en verde." 
+
+Evidencia:
+- model/init_db.js
+- scripts/finops-benchmark.js
+- Delivery_5_FinOps_Optimization_&_Final_Defense/FinOps_Optimization_Final_Defense_Report.md
+
+
+SLIDE 10 - DEMO RAPIDA (OPCIONAL)
+Tiempo: 8:05 - 8:50
+Titulo sugerido:
+"Prueba de reproducibilidad"
+
+En pantalla (comandos):
+- npm run devex:up
+- npm run ci
+- npm run security:update
+- npm run security:sbom
+- npm run security:scan
+- npm run finops:benchmark
+
+Guion oral sugerido:
+"Si queremos validar rapidamente, el repositorio ya trae comandos de arranque, calidad, seguridad y benchmark. Esto demuestra que los resultados son reproducibles y no solo documentales."
+
+Referencia:
+- README.md (seccion Developer Commands)
+
+
+SLIDE 11 - IMPACTO ACUMULADO
+Tiempo: 8:50 - 9:35
+Titulo sugerido:
+"Impacto final del ciclo 1->5"
+
+En pantalla (bullets):
+- Calidad gobernada por CI
+- Seguridad integrada al flujo de entrega
+- Arquitectura con hoja de ruta realista
+- Mejor DevEx y menor costo operativo de startup
+
+Guion oral sugerido:
+"El impacto combinado es mas fuerte que cada delivery aislado: ahora hay una base de calidad automatizada, controles de seguridad continuos, una direccion de arquitectura con criterios de negocio y una mejora concreta de costo/rendimiento. Es una modernizacion gradual, medible y defendible." 
+
+
+SLIDE 12 - CIERRE Y PROXIMOS PASOS
+Tiempo: 9:35 - 10:00
+Titulo sugerido:
+"Cierre"
+
+En pantalla (bullets):
+- Resultado: plataforma academica mas robusta y auditable
+- Siguiente etapa: ejecutar ADR-004 por vertical slices
+- Mantener gates de calidad y seguridad como no negociables
+
+Guion oral sugerido:
+"Cerramos esta fase con una plataforma mas robusta sin perder el objetivo educativo original. El siguiente paso es ejecutar el plan de modularizacion por slices pequenos, manteniendo como no negociables los gates de calidad, seguridad y la medicion de impacto." 
+
+
+==================================================
+3) SPEAKER NOTES RAPIDOS (POR SI TE QUEDAS SIN TIEMPO)
+==================================================
+
+Si te quedan 7-8 minutos en lugar de 10, prioriza:
+1. Slide 1 (contexto)
+2. Slide 3 (Discovery)
+3. Slide 4 (Governance + metricas)
+4. Slide 6 y 7 (Security con 3 HIGH -> 0)
+5. Slide 9 (FinOps 61.54%)
+6. Slide 12 (cierre)
+
+Frase puente recomendada:
+"No hicimos cambios aislados; construimos una cadena de mejoras donde cada entrega habilita la siguiente".
+
+
+==================================================
+4) PREGUNTAS DIFICILES (Q&A) Y RESPUESTAS CORTAS
+==================================================
+
+P1) "Por que no migraron directo a microservicios?"
+R: Porque el costo/riesgo era alto para este contexto. La estrategia modular monolith da separacion de dominios sin complejidad operativa distribuida.
+
+P2) "Como saben que no rompieron funcionalidad?"
+R: Con pipeline de pruebas y cobertura alta. Se mantuvo 55/55 tests aprobados despues de cambios de seguridad y FinOps.
+
+P3) "Que evidencia tienen de mejora en seguridad?"
+R: Reporte antes/despues de Trivy: 3 HIGH a 0, SBOM generado y gate en CI para bloquear regresiones de severidad alta/critica.
+
+P4) "La mejora FinOps es real o teorica?"
+R: Se midio con benchmark reproducible y ademas el ahorro en round-trips (13->5) es estructural, por lo que reduce overhead de inicializacion.
+
+P5) "Que sigue ahora?"
+R: Ejecutar ADR-004 por vertical slices: IAM, Catalogo y Ventas, reforzando contratos internos y manteniendo gobernanza automatizada.
+
+
+==================================================
+5) CHECKLIST DE ENTREGA PARA POWERPOINT
+==================================================
+
+Checklist de forma:
+- 12 slides maximo
+- 3-5 bullets por slide
+- 1 grafico simple en slide 7 (before/after seguridad)
+- 1 grafico simple en slide 9 (13->5 llamadas DB)
+- Tipografia grande y poco texto
+
+Checklist de contenido:
+- Mencionar cada Delivery al menos una vez
+- Mostrar minimo 3 metricas cuantitativas
+- Incluir evidencia de CI/security/benchmark
+- Cerrar con proximo paso tecnico claro
+
+
+==================================================
+6) VERSION ULTRA CORTA (30 SEG DE APERTURA)
+==================================================
+
+"Este proyecto moderniza una app educativa vulnerable sin perder su objetivo didactico. En cinco entregas, pasamos de diagnostico y deuda tecnica a una operacion gobernada por CI, seguridad integrada con Trivy y SBOM, una estrategia arquitectonica formal y una optimizacion FinOps medible de 61.54% en la inicializacion. Todo con evidencia reproducible y pruebas en verde." 
+
+
+==================================================
+7) FUENTES USADAS (PARA RESPALDO)
+==================================================
+
+- Delivery_1_Discovery_&_Reverse_Engineering/README.md
+- Delivery_1_Discovery_&_Reverse_Engineering/CONTEXT_MAP.md
+- Delivery_1_Discovery_&_Reverse_Engineering/ONBOARDING_LOG.md
+- Delivery_1_Discovery_&_Reverse_Engineering/USER_STORIES.md
+- Delivery_2_Governance_&_Technical_Debt_Audit/GOVERNANCE_AND_TECH_DEBT_AUDIT.md
+- Delivery_2_Governance_&_Technical_Debt_Audit/CI_GOVERNANCE_LOG.md
+- Delivery_2_Governance_&_Technical_Debt_Audit/CYCLOMATIC_COMPLEXITY_REPORT.md
+- Delivery_3_Security_Hardening_(DevSecOps)/Security_Hardening_Report.md
+- Delivery_4_Architecture_Strategy_&_DevEx/Architecture_Strategy_DevEx_Report.md
+- Delivery_5_FinOps_Optimization_&_Final_Defense/FinOps_Optimization_Final_Defense_Report.md
+- .github/workflows/governance.yml
+- .github/workflows/security-scan.yml
+- README.md
+
+==================================================
+8) MATRIZ EJECUTIVA POR DELIVERY (PROBLEMA -> ACCION -> RESULTADO)
+==================================================
+
+DELIVERY 1 - DISCOVERY Y REVERSE ENGINEERING
+Problema detectado:
+- No habia visibilidad clara de dominios, riesgos ni flujo funcional real.
+
+Acciones realizadas:
+- Mapeo de contextos de negocio (IAM, Catalogo, Ventas).
+- Recuperacion de user stories desde rutas/modelos reales.
+- Auditoria de onboarding y bloqueos de ejecucion inicial.
+
+Resultados documentados:
+- Context map AS-IS y TO-BE para guiar modernizacion.
+- Lista de riesgos criticos: SQLi, config fragil, secretos hardcoded, init_db fragil.
+- Base de evidencia para priorizar deuda tecnica en Delivery 2.
+
+
+DELIVERY 2 - GOVERNANCE Y TECH DEBT AUDIT
+Problema detectado:
+- Sin quality gates estrictos, el proyecto podia degradarse con cada cambio.
+
+Acciones realizadas:
+- Pipeline CI de gobernanza con ESLint + Jest + reportes.
+- Umbral de complejidad (max 10) y cobertura minima (80%).
+- Identificacion de hotspots de deuda y propuesta Strangler Fig.
+
+Resultados documentados:
+- Cobertura global: statements 98.38%, branches 85.71%, functions 97.5%, lines 98.36%.
+- Complejidad maxima observada: 7 (dentro del gate).
+- Top hotspot funcional/arquitectonico: routes/products.js.
+
+
+DELIVERY 3 - SECURITY HARDENING (DEVSECOPS)
+Problema detectado:
+- Vulnerabilidades de dependencias y SQL injection en codigo core.
+
+Acciones realizadas:
+- SBOM con Trivy en formato CycloneDX.
+- Escaneo de vulnerabilidades antes/despues + gate HIGH/CRITICAL en CI.
+- Parches SQLi con consultas parametrizadas en auth y products.
+- Proteccion de secretos con Husky pre-commit.
+
+Resultados documentados:
+- Dependencias: 3 HIGH -> 0.
+- SQLi mitigado en 5 puntos principales de codigo.
+- Suite de pruebas estable: 55/55 tests en verde.
+
+
+DELIVERY 4 - ARCHITECTURE STRATEGY Y DEVEX
+Problema detectado:
+- Onboarding no totalmente estandarizado y falta de decision formal de evolucion arquitectonica.
+
+Acciones realizadas:
+- One-command setup: npm run devex:up.
+- ADR-004: evolucion a modular monolith por componentes.
+- Definicion de riesgos, mitigaciones y costo estimado.
+
+Resultados documentados:
+- Arranque local automatizado sin pasos manuales dispersos.
+- Hoja de ruta clara para migracion incremental por componentes.
+- Estimacion primera ola de refactor: 5 a 9 semanas.
+
+
+DELIVERY 5 - FINOPS OPTIMIZATION Y FINAL DEFENSE
+Problema detectado:
+- Inicializacion de BD con exceso de round-trips y control por errores.
+
+Acciones realizadas:
+- Refactor idempotente en init_db (CREATE IF NOT EXISTS).
+- Bulk inserts + ON CONFLICT DO NOTHING.
+- Benchmark reproducible con latencias sinteticas.
+
+Resultados documentados:
+- Llamadas a BD en startup path: 13 -> 5.
+- Mejora: 61.54%.
+- Validacion funcional sin regresion: 55/55 tests.
+
+
+==================================================
+9) DETALLE TECNICO POR DELIVERY (CON EVIDENCIA DE ARCHIVOS)
+==================================================
+
+DELIVERY 1 - DETALLE TECNICO
+
+9.1 Hallazgos de arquitectura (AS-IS)
+- IAM y soporte de infraestructura estaban parcialmente delimitados.
+- Catalogo y Ventas aparecian acoplados en los mismos artefactos.
+- Dependencias compartidas sin contratos formales entre contextos.
+
+9.2 Hallazgos de onboarding
+- Config por STAGE con fallback a IP privada no portable.
+- Inicializacion de BD con logica invertida que afecta primer arranque.
+- Secreto de sesion hardcoded y credenciales en texto plano.
+
+9.3 Valor para el programa
+- Se establecio baseline tecnico para justificar acciones de governance y security.
+- Se definio donde refactorizar primero para reducir riesgo real.
+
+
+DELIVERY 2 - DETALLE TECNICO
+
+9.4 Gates implementados
+- Gate de complejidad: build falla si funcion supera complejidad 10.
+- Gate de cobertura: build falla si cualquier metrica cae bajo 80%.
+- Publicacion de artefactos de cobertura y reportes de gobernanza.
+
+9.5 Metricas concretas reportadas
+- Statements: 183/186 = 98.38%.
+- Branches: 24/28 = 85.71%.
+- Functions: 39/40 = 97.5%.
+- Lines: 181/184 = 98.36%.
+
+9.6 Complejidad ciclomatica
+- Total funciones analizadas: 43.
+- Maxima complejidad: 7.
+- 97.7% de funciones en rango 1-5 (bajo riesgo).
+
+9.7 Hotspots priorizados
+- routes/products.js: mayor acoplamiento y complejidad funcional.
+- model/init_db.js: sobrecarga de callbacks y fragilidad de init.
+- rutas/login + auth: deuda funcional y seguridad.
+
+
+DELIVERY 3 - DETALLE TECNICO
+
+9.8 Vulnerabilidades de dependencias detectadas (antes)
+- CVE-2026-26996 (HIGH) en minimatch.
+- CVE-2026-27903 (HIGH) en minimatch.
+- CVE-2026-27904 (HIGH) en minimatch.
+
+9.9 Parches aplicados
+- Update de dependencia vulnerable via flujo de seguridad del proyecto.
+- Migracion de consultas SQL concatenadas a parametrizadas:
+	- model/auth.js: do_auth con placeholders.
+	- model/products.js: getProduct, search, purchase, get_purcharsed.
+
+9.10 Integracion CI de seguridad
+- Workflow independiente para security-scan.
+- Trivy ejecutado en modo resumen + modo gate.
+- Falla automatica en severidad HIGH/CRITICAL.
+- Artefactos cargados: SBOM y reporte de vulnerabilidades.
+
+9.11 Resultado final
+- package-lock scan: 0 vulnerabilidades.
+- Pruebas mantenidas sin regresion funcional (55/55).
+
+
+DELIVERY 4 - DETALLE TECNICO
+
+9.12 One-command setup
+- El script de plataforma detecta compose disponible.
+- Levanta infraestructura y espera salud de postgres.
+- Ejecuta secuencia de estabilizacion para seed legacy.
+- Estandariza el arranque para todo el equipo.
+
+9.13 ADR-004 (Decision)
+- Opcion elegida: modular monolith por componentes internos.
+- Opciones descartadas:
+	1) mantener as-is,
+	2) migrar directo a microservicios.
+
+9.14 Trade-offs explicitos
+- Beneficio: menor acoplamiento y mejor mantenibilidad.
+- Costo: sin escalado independiente por componente.
+- Riesgo: erosion de fronteras si no hay disciplina de arquitectura.
+
+9.15 Plan temporal
+- IAM: 1-2 semanas.
+- Catalogo: 1-2 semanas.
+- Ventas: 2-3 semanas.
+- Hardening de estandares: 1-2 semanas.
+- Total primera ola: 5-9 semanas.
+
+
+DELIVERY 5 - DETALLE TECNICO
+
+9.16 Refactor de inicializacion
+- Antes: many calls individuales y control por error.
+- Despues: operaciones idempotentes + cargas bulk.
+
+9.17 Comparativa cuantitativa
+- Antes: 13 llamadas DB en startup path.
+- Despues: 5 llamadas DB.
+- Reduccion relativa: 61.54%.
+
+9.18 Benchmark reportado
+- Perfil 6 ms: 78 ms -> 30 ms.
+- Perfil 12 ms: 156 ms -> 60 ms.
+- Perfil 20 ms: 260 ms -> 100 ms.
+
+9.19 Integridad funcional
+- Ajustes de tests/mocks alineados al nuevo comportamiento.
+- Resultado global: 7/7 suites, 55/55 tests.
+
+
+==================================================
+10) SCRIPT ORAL EXTENDIDO (VERSION 10 MIN, MAS DETALLADA)
+==================================================
+
+Bloque 1 (inicio, 1 minuto):
+"Nuestro objetivo no fue ocultar vulnerabilidades, porque es un proyecto educativo, sino profesionalizar la forma en que se trabaja sobre ellas. Empezamos con discovery para entender el sistema real, luego pusimos gobernanza para evitar regresiones, aplicamos hardening de seguridad, consolidamos una estrategia de arquitectura y cerramos con optimizacion FinOps medible." 
+
+Bloque 2 (delivery 1 y 2, 2.5 minutos):
+"En Delivery 1 confirmamos tres dominios principales: IAM, Catalogo y Ventas. Identificamos acoplamiento entre Catalogo y Ventas, riesgos de SQL injection y friccion de onboarding por configuracion e inicializacion de base de datos. Con esa base pasamos a Delivery 2, donde institucionalizamos quality gates en CI: complejidad maxima 10 y cobertura minima 80. Los resultados actuales son superiores: 98.38% de statements y complejidad maxima 7. Esto cambio la conversacion de opinion a evidencia." 
+
+Bloque 3 (delivery 3, 2 minutos):
+"Luego fortalecimos seguridad de cadena de suministro y de codigo. Generamos SBOM con Trivy, corrimos escaneo antes/despues y agregamos gate CI para bloquear HIGH/CRITICAL. En codigo, reemplazamos concatenacion SQL por consultas parametrizadas en auth y products. Tambien instalamos control preventivo con pre-commit para evitar filtracion de secretos. Resultado: 3 vulnerabilidades HIGH a 0, manteniendo 55 de 55 pruebas en verde." 
+
+Bloque 4 (delivery 4, 2 minutos):
+"Con la base de calidad y seguridad, definimos el siguiente salto: arquitectura. Delivery 4 introdujo arranque de entorno con un comando y formalizo ADR-004 para evolucionar a modular monolith por componentes, no a microservicios directos. Esto reduce riesgo operativo y mantiene simplicidad de despliegue mientras mejoramos fronteras internas. El plan inicial de ejecucion se estima en 5 a 9 semanas, por slices pequenos." 
+
+Bloque 5 (delivery 5 y cierre, 2.5 minutos):
+"En Delivery 5 apuntamos al costo operativo de startup. Refactorizamos init_db para reducir round-trips de 13 a 5, con enfoque idempotente y carga bulk. El benchmark reporta 61.54% de mejora en distintos perfiles de latencia. Lo importante: mejoramos performance/costo sin romper funcionalidad, con 55/55 pruebas aprobadas. En resumen, este ciclo demuestra una modernizacion incremental, medible y defendible tecnica y academicamente." 
+
+
+==================================================
+11) DIAPOSITIVAS DE RESPALDO (ANEXO OPCIONAL)
+==================================================
+
+ANEXO A - DORA METRICS (definicion estrategica de Delivery 2)
+- Deployment Frequency: objetivo multiples despliegues por semana.
+- Lead Time for Changes: objetivo menor a 1 dia.
+- Change Failure Rate: objetivo menor a 15%.
+- MTTR: objetivo menor a 1 hora.
+
+ANEXO B - TOP FUNCIONES POR COMPLEJIDAD
+- routes/products.js (linea 89): complejidad 7.
+- routes/login.js (linea 28): complejidad 3.
+- login_check.js (check_logged): complejidad 3.
+
+ANEXO C - SEGURIDAD ANTES/DESPUES
+- Antes: minimatch vulnerable con 3 CVEs HIGH.
+- Despues: 0 vulnerabilidades en scan reportado.
+
+ANEXO D - FINOPS ANTES/DESPUES
+- Round-trips startup DB: 13 -> 5.
+- Mejora de tiempo de camino de inicializacion: 61.54%.
+
+
+==================================================
+12) MAPA DE MENSAJES CLAVE PARA EL JURADO
+==================================================
+
+Mensaje 1: Gobernanza
+"No dependemos del criterio individual para calidad; el pipeline bloquea degradaciones automaticamente."
+
+Mensaje 2: Seguridad
+"La seguridad quedo integrada en el flujo diario: SBOM, escaneo y gates en CI, mas controles pre-commit."
+
+Mensaje 3: Arquitectura
+"Elegimos modular monolith por balance costo-riesgo, con ruta incremental y sin Big Bang." 
+
+Mensaje 4: Economia tecnica
+"No solo mejoramos codigo; reducimos overhead real de inicializacion con evidencia cuantitativa." 
+
+Mensaje 5: Reproducibilidad
+"Todos los resultados tienen comandos y artefactos verificables dentro del repo." 
+
+
+==================================================
+13) PREGUNTAS AVANZADAS DE DEFENSA (Q&A EXTENDIDO)
+==================================================
+
+P6) "Si hay alta cobertura, por que aun hablan de riesgo?"
+R: Cobertura reduce riesgo de regresion funcional, pero no reemplaza controles de seguridad ni decisiones de arquitectura. Por eso se combino CI + Trivy + ADR.
+
+P7) "Que riesgo queda abierto al final de estos 5 deliveries?"
+R: El principal riesgo residual es la erosion de fronteras internas durante la migracion. La mitigacion es gobernanza de arquitectura y migracion por slices con pruebas.
+
+P8) "Que garantia tienen de que FinOps no sacrifico mantenibilidad?"
+R: El refactor de init_db simplifico flujo (menos llamadas, mas idempotencia) y fue acompanado por ajuste de tests y mocks. La mantenibilidad mejora junto con eficiencia.
+
+P9) "Que diferencia hay entre DevEx y solo automatizar scripts?"
+R: DevEx aqui incluye estandarizacion de onboarding, reduccion de pasos manuales, comandos consistentes y menor tiempo a entorno funcional, no solo scripting aislado.
+
+P10) "Como conectan este trabajo con una practica profesional real?"
+R: El enfoque replica una modernizacion enterprise incremental: discovery basado en evidencia, governance con gates, security shift-left, ADR formal y optimizacion medible.
+
+
+==================================================
+14) PLAN DE ENSAYO (PARA LLEGAR FINO A 10 MIN)
+==================================================
+
+Ensayo 1 (contenido):
+- Objetivo: terminar en 9:30 - 10:00.
+- Enfoque: claridad del storyline y transiciones.
+
+Ensayo 2 (metricas):
+- Objetivo: memorizar 8 datos clave.
+- Datos a fijar:
+	1) 98.38 statements
+	2) 85.71 branches
+	3) max complejidad 7
+	4) umbral complejidad 10
+	5) umbral cobertura 80
+	6) 3 HIGH -> 0
+	7) 55/55 tests
+	8) 61.54%
+
+Ensayo 3 (preguntas):
+- Objetivo: responder en 20-30 segundos por pregunta.
+- Enfoque: problema -> accion -> evidencia -> impacto.
+
+
+==================================================
+15) RESUMEN EJECUTIVO DE 1 MINUTO (POR SI TE CORTAN TIEMPO)
+==================================================
+
+"Realizamos una modernizacion en cinco etapas sobre una app vulnerable educativa. Primero diagnosticamos dominios, riesgos y fricciones reales. Luego incorporamos gobernanza con quality gates, alcanzando 98.38% de cobertura de statements y complejidad maxima de 7 bajo umbral 10. Despues aplicamos hardening de seguridad con SBOM, Trivy y queries parametrizadas, reduciendo vulnerabilidades de 3 HIGH a 0 sin romper pruebas (55/55). Definimos un camino arquitectonico formal via ADR-004 hacia modular monolith con migracion incremental. Finalmente optimizamos init_db en clave FinOps, reduciendo llamadas DB de 13 a 5 y logrando 61.54% de mejora en el camino de inicializacion. Todo queda respaldado por comandos y artefactos reproducibles en el repositorio." 
+
+
+==================================================
+16) ALINEACION TECNICA CON INSTRUCCIONES ORIGINALES (SIN FECHAS)
+==================================================
+
+Nota:
+- Esta seccion alinea explicitamente cada entrega con el contexto original de instrucciones.
+- Se omiten fechas, tal como se solicito.
+
+
+DELIVERY 1 - DISCOVERY & REVERSE ENGINEERING
+Focus solicitado:
+- Requirements Engineering (AI-Native) + Domain-Driven Design.
+
+Tarea 1: Onboarding Log (DevEx Audit)
+Implementacion tecnica real:
+- Se documento el flujo de arranque y sus bloqueos en ONBOARDING_LOG.
+- Se identifico fallback de configuracion no portable por STAGE hacia IP privada (10.211.55.70).
+- Se detecto logica invertida en init_db para el seed de usuarios en primer arranque.
+- Se registraron impactos concretos: login no funcional en primer inicio y friccion de setup.
+
+Tarea 2: AI-Driven Discovery + Context Map (Mermaid)
+Implementacion tecnica real:
+- Se mapearon contextos de negocio y dependencias entre modulos del monolito.
+- Se entregaron diagramas Mermaid AS-IS y TO-BE.
+- Se incluyeron relaciones tipo Shared Kernel, Conformist y ACL para propuesta de refactor.
+
+Tarea 3: Backlog Recovery (User Stories)
+Implementacion tecnica real:
+- Se recuperaron historias trazables a endpoints y metodos de modelo.
+- Ejemplo de trazabilidad: login, catalogo, detalle, busqueda, compra, historial.
+- Cada historia referencia archivo/ruta y logica de soporte en model.
+
+Mini-rubric (estado tecnico)
+- [x] Context Map refleja estructura real del codebase.
+- [x] User Stories trazables a modulos/archivos.
+- [x] Onboarding log identifica fricciones con evidencia.
+
+
+DELIVERY 2 - GOVERNANCE & TECHNICAL DEBT AUDIT
+Focus solicitado:
+- Quality Strategy + Metrics.
+
+Tarea 1: Governance Pipeline (CI)
+Implementacion tecnica real:
+- Workflow en GitHub Actions para push y pull_request.
+- Secuencia: checkout -> setup-node(22) -> npm ci -> lint -> test -> reportes.
+- Gate de complejidad via ESLint (complexity max 10).
+- Gate de cobertura via Jest (global >= 80 en branches/functions/lines/statements).
+- Falla con exit code 1 cuando se rompe cualquier umbral.
+
+Tarea 2: Tech Debt Audit + Strangler Fig
+Implementacion tecnica real:
+- Hotspots priorizados por riesgo/impacto: routes/products.js, model/init_db.js, rutas de login/auth.
+- Plan Strangler por fases:
+	1) crear nueva arquitectura controllers/services,
+	2) estrangular init_db,
+	3) estrangular autenticacion,
+	4) estrangular products por endpoint.
+
+Tarea 3: Dashboard DORA metrics
+Implementacion tecnica real:
+- Se definieron cuatro metricas DORA en documento de gobernanza:
+	Deployment Frequency,
+	Lead Time for Changes,
+	Change Failure Rate,
+	MTTR.
+- Se especifico forma de medicion y objetivo por metrica.
+
+Tarea 4: Quality gates + SonarQube
+Implementacion tecnica real:
+- Quality gates implementados y operativos con ESLint + Jest.
+- No se encontro configuracion SonarQube en el repositorio actual.
+- Recomendacion para defensa: reportar como gap controlado y backlog de mejora.
+
+Mini-rubric (estado tecnico)
+- [x] CI pipeline corre en PRs.
+- [x] DORA metrics definidos para dashboard.
+- [~] Quality gates implementados; SonarQube no evidenciado en repo.
+- [x] Plan de refactor especifico y priorizado por riesgo/impacto.
+
+
+DELIVERY 3 - SECURITY HARDENING (DEVSECOPS)
+Focus solicitado:
+- Supply Chain Security.
+
+Tarea 1: SBOM generation
+Implementacion tecnica real:
+- SBOM generado con Trivy en formato CycloneDX JSON.
+- Comando: npm run security:sbom.
+- Artefacto: security/sbom.json.
+
+Tarea 2: Vulnerability patching
+Implementacion tecnica real:
+- Escaneo Trivy antes/despues con evidencia en JSON.
+- Vulnerabilidades HIGH en minimatch corregidas por actualizacion.
+- Parches de codigo para SQLi:
+	- model/auth.js: query parametrizada con $1/$2.
+	- model/products.js: parametrizacion en getProduct/search/purchase/get_purcharsed.
+- Verificacion posterior: 0 vulnerabilidades reportadas.
+
+Tarea 3: Secret protection pre-commit
+Implementacion tecnica real:
+- Hook Husky en .husky/pre-commit.
+- Escanea solo staged diff (git diff --cached).
+- Bloquea commit ante patrones como API_KEY=, TOKEN=, PASSWORD=, PRIVATE_KEY=, DB_PASSWORD=, SESSION_SECRET=.
+- Devuelve exit code 1 cuando detecta patrones.
+
+Mini-rubric (estado tecnico)
+- [x] SBOM presente en el repo.
+- [x] Evidencia before/after de remediacion.
+- [x] Pre-commit bloquea secretos dummy efectivamente.
+
+
+DELIVERY 4 - ARCHITECTURE STRATEGY & DEVEX
+Focus solicitado:
+- Leadership, ADRs, Platform Engineering.
+
+Tarea 1: One-Command setup (<5 min)
+Implementacion tecnica real:
+- Script scripts/devex-up.js:
+	1) detecta docker compose vs docker-compose,
+	2) ejecuta up -d --build,
+	3) espera healthcheck de postgres_db,
+	4) reinicia vulnerable_node para estabilizar seed legacy,
+	5) imprime URL y credenciales demo.
+- Comandos de entrada/salida: npm run devex:up y npm run devex:down.
+
+Tarea 2: Strategic RFC / ADR
+Implementacion tecnica real:
+- ADR-004 documenta decision de modular monolith por componentes.
+- Incluye estructura RFC: contexto, decision, opciones, trade-offs, riesgos, mitigaciones, costos y consecuencias.
+- Opciones comparadas: mantener as-is, microservicios, modular monolith (elegida).
+
+Mini-rubric (estado tecnico)
+- [x] Entorno levanta con comando unico y sin pasos manuales dispersos.
+- [x] ADR en formato estandar (Context, Decision, Consequences + riesgos/costos).
+- [x] Argumentos respaldados por datos de deliveries previos.
+
+
+DELIVERY 5 - FINOPS OPTIMIZATION & FINAL DEFENSE
+Focus solicitado:
+- Cloud Economics + Performance.
+
+Tarea 1: Cost optimization (funcion resource-intensive)
+Implementacion tecnica real:
+- Funcion objetivo: model/init_db.js -> init_db().
+- Refactor:
+	- CREATE TABLE IF NOT EXISTS (idempotente),
+	- bulk inserts para users y products,
+	- ON CONFLICT DO NOTHING.
+- Reduccion de round-trips de DB: 13 -> 5.
+
+Tarea 2: Benchmark before/after
+Implementacion tecnica real:
+- Script dedicado: scripts/finops-benchmark.js.
+- Escenarios de latencia sintetica: 6ms, 12ms, 20ms.
+- 10,000 iteraciones por perfil.
+- Resultado consistente: 61.54% de mejora en camino de inicializacion.
+
+Tarea 3: Final repo polish
+Implementacion tecnica real:
+- README profesionalizado con badges, quick start, comandos y navegacion por deliveries.
+- Consolidacion de comandos DevEx/Security/FinOps en guia central.
+
+Mini-rubric (estado tecnico)
+- [x] Benchmark con mejora medible >15%.
+- [x] Refactor limpio sin romper funcionalidad (55/55 tests).
+- [x] Repositorio en estado handover-ready.
+
+
+==================================================
+17) CHECKLIST DE DEFENSA TECNICA (POR DELIVERY)
+==================================================
+
+Checklist rapido para exponer con mas profundidad tecnica:
+
+Delivery 1:
+- Mencionar que el Context Map no fue teorico: se trazo desde rutas/modelos concretos.
+- Explicar una friccion de onboarding con causa raiz (config o init_db) y su impacto.
+- Mostrar una historia de usuario y su trazabilidad archivo-a-archivo.
+
+Delivery 2:
+- Explicar como falla CI cuando baja cobertura o sube complejidad.
+- Mostrar umbrales exactos (80% y 10) y valores actuales del repo.
+- Enunciar hotspots y por que el orden de prioridad importa.
+- Si preguntan por SonarQube: indicar estado actual y siguiente accion concreta.
+
+Delivery 3:
+- Mostrar cadena completa: SBOM -> scan before -> patch -> scan after -> gate.
+- Explicar por que parametrizacion SQL mitiga inyeccion.
+- Describir logica del hook pre-commit sobre staged changes.
+
+Delivery 4:
+- Describir flujo interno de devex-up (no solo el comando).
+- Defender por que modular monolith fue mejor decision que microservicios en esta fase.
+- Citar riesgos de arquitectura y mitigaciones.
+
+Delivery 5:
+- Explicar reduccion estructural de round-trips y su efecto FinOps.
+- Mostrar que la mejora fue validada con benchmark reproducible.
+- Reforzar que no hubo regresion funcional (tests en verde).
+
+
+==================================================
+18) MENSAJE DE CIERRE TECNICO (VERSION PRO)
+==================================================
+
+"Este programa no se limito a corregir issues puntuales; construyo una plataforma de entrega tecnica madura. Delivery 1 establecio trazabilidad funcional y de dominio. Delivery 2 institucionalizo gobernanza automatizada con quality gates. Delivery 3 incorporo seguridad de cadena de suministro y hardening de codigo con evidencia before/after. Delivery 4 definio una estrategia arquitectonica ejecutable y mejoro drasticamente el onboarding. Delivery 5 demostro optimizacion FinOps cuantificable sin romper comportamiento. En conjunto, el repositorio queda reproducible, auditable y listo para evolucion incremental basada en datos." 
+
+
+FIN DEL DOCUMENTO
